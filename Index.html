@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path of Aether · Sacred Guidance</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@300;400&display=swap');
+        
+        :root {
+            --void: #0a0a12;
+            --deep-space: #1a1a2e;
+            --cosmic-purple: #4a3f6e;
+            --aether-glow: #8b7fb8;
+            --moonlight: #c9c3d8;
+            --starlight: #e8e4f0;
+            --gold-accent: #d4af37;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: var(--void);
+            color: var(--starlight);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Cosmic background effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(2px 2px at 20% 30%, white, transparent),
+                radial-gradient(2px 2px at 60% 70%, white, transparent),
+                radial-gradient(1px 1px at 50% 50%, white, transparent),
+                radial-gradient(1px 1px at 80% 10%, white, transparent),
+                radial-gradient(2px 2px at 90% 60%, white, transparent),
+                radial-gradient(1px 1px at 33% 80%, white, transparent);
+            background-size: 200% 200%;
+            background-position: 0 0, 40px 60px, 130px 270px, 70px 100px, 150px 200px, 90px 180px;
+            opacity: 0.3;
+            animation: twinkle 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.5; }
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        header {
+            margin-bottom: 4rem;
+            animation: fadeIn 1.2s ease-out;
+        }
+        
+        .logo-symbol {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--moonlight), var(--aether-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(139, 127, 184, 0.3);
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--aether-glow);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+        
+        .description {
+            font-size: 1.2rem;
+            color: var(--moonlight);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 4rem auto;
+            font-style: italic;
+        }
+        
+        .navigation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .nav-card {
+            background: linear-gradient(135deg, var(--deep-space) 0%, var(--cosmic-purple) 100%);
+            border: 2px solid var(--aether-glow);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 127, 184, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .nav-card:hover::before {
+            left: 100%;
+        }
+        
+        .nav-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(139, 127, 184, 0.5);
+            border-color: var(--gold-accent);
+        }
+        
+        .nav-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .nav-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+        
+        .nav-description {
+            color: var(--moonlight);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .motto {
+            margin-top: 5rem;
+            padding: 2rem;
+            border-top: 1px solid var(--aether-glow);
+            animation: fadeIn 2s ease-out;
+        }
+        
+        .motto-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--gold-accent);
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .motto-subtext {
+            color: var(--aether-glow);
+            font-size: 1rem;
+            letter-spacing: 0.2em;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        footer {
+            margin-top: 3rem;
+            color: var(--aether-glow);
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .navigation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-symbol">🌀</div>
+            <h1>PATH OF AETHER</h1>
+            <p class="tagline">Sacred Guidance</p>
+            <p class="description">
+                A spiritual path built around regulation, reflection, and ritual. 
+                Mystical language with practical outcomes—turning overwhelm into insight.
+            </p>
+        </header>
+        
+        <nav class="navigation-grid">
+            <a href="path-of-aether.html" class="nav-card">
+                <div class="nav-icon">🔮</div>
+                <h2 class="nav-title">Tarot Readings</h2>
+                <p class="nav-description">
+                    Draw cards for guidance across 15 spreads. From quick daily insight to comprehensive Celtic Cross readings.
+                </p>
+            </a>
+            
+            <a href="path-of-aether-horoscopes.html" class="nav-card">
+                <div class="nav-icon">✨</div>
+                <h2 class="nav-title">Daily Horoscopes</h2>
+                <p class="nav-description">
+                    Receive daily celestial guidance filtered through Path of Aether's therapeutic lens. Updated each day.
+                </p>
+            </a>
+        </nav>
+        
+        <div class="motto">
+            <p class="motto-text">"As I intend, in light and love."</p>
+            <p class="motto-subtext">The Aether carries it so.</p>
+        </div>
+        
+        <footer>
+            Regulation · Reflection · Ritual
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path of Aether · Horoscopes</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@300;400&display=swap');
+        
+        :root {
+            --void: #0a0a12;
+            --deep-space: #1a1a2e;
+            --cosmic-purple: #4a3f6e;
+            --aether-glow: #8b7fb8;
+            --moonlight: #c9c3d8;
+            --starlight: #e8e4f0;
+            --gold-accent: #d4af37;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: var(--void);
+            color: var(--starlight);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Cosmic background effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(2px 2px at 20% 30%, white, transparent),
+                radial-gradient(2px 2px at 60% 70%, white, transparent),
+                radial-gradient(1px 1px at 50% 50%, white, transparent),
+                radial-gradient(1px 1px at 80% 10%, white, transparent),
+                radial-gradient(2px 2px at 90% 60%, white, transparent),
+                radial-gradient(1px 1px at 33% 80%, white, transparent);
+            background-size: 200% 200%;
+            background-position: 0 0, 40px 60px, 130px 270px, 70px 100px, 150px 200px, 90px 180px;
+            opacity: 0.3;
+            animation: twinkle 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.5; }
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeIn 1.2s ease-out;
+        }
+        
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--moonlight), var(--aether-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(139, 127, 184, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--aether-glow);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+        
+        .phase {
+            margin: 3rem 0;
+            animation: fadeIn 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .phase-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold-accent);
+            letter-spacing: 0.1em;
+            text-align: center;
+        }
+        
+        .zodiac-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .zodiac-card {
+            background: linear-gradient(135deg, var(--deep-space) 0%, var(--cosmic-purple) 100%);
+            border: 1px solid var(--aether-glow);
+            border-radius: 12px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .zodiac-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 127, 184, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .zodiac-card:hover::before {
+            left: 100%;
+        }
+        
+        .zodiac-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(139, 127, 184, 0.4);
+            border-color: var(--gold-accent);
+        }
+        
+        .zodiac-symbol {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .zodiac-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--moonlight);
+            margin-bottom: 0.25rem;
+        }
+        
+        .zodiac-dates {
+            color: var(--aether-glow);
+            font-size: 0.9rem;
+        }
+        
+        .horoscope-display {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid var(--aether-glow);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            line-height: 1.8;
+            animation: fadeIn 1s ease-out;
+            backdrop-filter: blur(10px);
+        }
+        
+        .horoscope-display h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .horoscope-display h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin: 2rem 0 1rem 0;
+            font-size: 1.3rem;
+        }
+        
+        .horoscope-text {
+            color: var(--moonlight);
+            font-size: 1.15rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .poa-reflection {
+            background: rgba(74, 63, 110, 0.3);
+            border-left: 3px solid var(--gold-accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        
+        .poa-reflection h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+        }
+        
+        .poa-reflection p {
+            color: var(--starlight);
+            line-height: 1.8;
+        }
+        
+        .moon-phase-box {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(74, 63, 110, 0.3);
+            border-radius: 8px;
+        }
+        
+        .moon-phase-box .emoji {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .moon-phase-box .phase-name {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .moon-phase-box .phase-description {
+            color: var(--moonlight);
+            font-style: italic;
+        }
+        
+        .crystal-box {
+            background: rgba(26, 26, 46, 0.5);
+            border: 1px solid var(--aether-glow);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .crystal-box h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+        }
+        
+        .crystal-name {
+            font-family: 'Cinzel', serif;
+            color: var(--moonlight);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .crystal-property {
+            color: var(--aether-glow);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+        
+        .crystal-use {
+            color: var(--starlight);
+        }
+        
+        button {
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(135deg, var(--cosmic-purple), var(--aether-glow));
+            color: var(--starlight);
+            border: 1px solid var(--gold-accent);
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            letter-spacing: 0.15em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            margin: 1rem auto;
+            display: block;
+        }
+        
+        button:hover {
+            background: linear-gradient(135deg, var(--aether-glow), var(--gold-accent));
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .loading {
+            text-align: center;
+            color: var(--aether-glow);
+            font-size: 1.2rem;
+            padding: 3rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding: 2rem;
+            color: var(--aether-glow);
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+        
+        .back-link {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .back-link a {
+            color: var(--gold-accent);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link a:hover {
+            color: var(--moonlight);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>PATH OF AETHER</h1>
+            <p class="subtitle">Daily Horoscopes</p>
+        </header>
+        
+        <div id="zodiacSelection" class="phase">
+            <h2 class="phase-title">Choose Your Sign</h2>
+            <div class="zodiac-grid">
+                <div class="zodiac-card" onclick="selectSign('aries')">
+                    <div class="zodiac-symbol">♈</div>
+                    <div class="zodiac-name">Aries</div>
+                    <div class="zodiac-dates">Mar 21 - Apr 19</div>
+                </div>
+                <div class="zodiac-card" onclick="selectSign('taurus')">
+                    <div class="zodiac-symbol">♉</div>
+                    <div class="zodiac-name">Taurus</div>
+                    <div class="zodiac-dates">Apr 20 - May 20</div>
+                </div>
+                <div class="zodiac-card" onclick="selectSign('gemini')">
+                    <div class="zodiac-symbol">♊</div>
+                    <div class="zodiac-name">Gemini</div>
+                    <div class="zodiac-dates">May 21 - Jun 20</div>
+                </div>
+                <div class="zodiac-card" onclick="selectSign('cancer')">
+                    <div class="zodiac-symbol">♋</div>
+                    <div class="zodiac-name">Cancer</div>
+                    <div class="zodiac-dates">Jun 21 - Jul 22</div>
+                </div>
+                <div class="zodiac-card" onclick="selectSign('leo')">
+                    <div class="zodiac-symbol">♌</div>
+                    <div class="zodiac-name">Leo</div>
+                    <div class="zodiac-dates">Jul 23 - Aug 22</div>
+                </div>
+                <div class="zodiac-card" onclick="selectSign('virgo')">
+                    <div class="zodiac-symbol">♍</div>
+                    <div class="zodiac-name">Virgo</div>
+                    <div class="zodiac-dates">Aug 23 - Sep 22</div>
+                </div>
+                <div class="zodiac-card" onclick="selectSign('libra')">
+                    <div class="zodiac-symbol">♎</div>
+                    <div class="zodiac-name">Libra</div>
+                    <div class="zodiac-dates">Sep 23 - Oct 22</div>
+                </div>
+                <div class="zodiac-card" onclick="selectSign('scorpio')">
+                    <div class="zodiac-symbol">♏</div>
+                    <div class="zodiac-name">Scorpio</div>
+                    <div class="zodiac-dates">Oct 23 - Nov 21</div>
+                </div>
+                <div class="zodiac-card" onclick="selectSign('sagittarius')">
+                    <div class="zodiac-symbol">♐</div>
+                    <div class="zodiac-name">Sagittarius</div>
+                    <div class="zodiac-dates">Nov 22 - Dec 21</div>
+                </div>
+                <div class="zodiac-card" onclick="selectSign('capricorn')">
+                    <div class="zodiac-symbol">♑</div>
+                    <div class="zodiac-name">Capricorn</div>
+                    <div class="zodiac-dates">Dec 22 - Jan 19</div>
+                </div>
+                <div class="zodiac-card" onclick="selectSign('aquarius')">
+                    <div class="zodiac-symbol">♒</div>
+                    <div class="zodiac-name">Aquarius</div>
+                    <div class="zodiac-dates">Jan 20 - Feb 18</div>
+                </div>
+                <div class="zodiac-card" onclick="selectSign('pisces')">
+                    <div class="zodiac-symbol">♓</div>
+                    <div class="zodiac-name">Pisces</div>
+                    <div class="zodiac-dates">Feb 19 - Mar 20</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="horoscopeDisplay" class="hidden"></div>
+        
+        <div class="back-link">
+            <a href="path-of-aether.html">← Back to Tarot</a>
+        </div>
+        
+        <footer>
+            Regulation · Reflection · Ritual
+        </footer>
+    </div>
+    
+    <script>
+        const ZODIAC_INFO = {
+            aries: { symbol: '♈', name: 'Aries', element: 'Fire', crystal: 'carnelian' },
+            taurus: { symbol: '♉', name: 'Taurus', element: 'Earth', crystal: 'rose_quartz' },
+            gemini: { symbol: '♊', name: 'Gemini', element: 'Air', crystal: 'clear_quartz' },
+            cancer: { symbol: '♋', name: 'Cancer', element: 'Water', crystal: 'moonstone' },
+            leo: { symbol: '♌', name: 'Leo', element: 'Fire', crystal: 'citrine' },
+            virgo: { symbol: '♍', name: 'Virgo', element: 'Earth', crystal: 'green_aventurine' },
+            libra: { symbol: '♎', name: 'Libra', element: 'Air', crystal: 'blue_lace_agate' },
+            scorpio: { symbol: '♏', name: 'Scorpio', element: 'Water', crystal: 'labradorite' },
+            sagittarius: { symbol: '♐', name: 'Sagittarius', element: 'Fire', crystal: 'amethyst' },
+            capricorn: { symbol: '♑', name: 'Capricorn', element: 'Earth', crystal: 'black_tourmaline' },
+            aquarius: { symbol: '♒', name: 'Aquarius', element: 'Air', crystal: 'fluorite' },
+            pisces: { symbol: '♓', name: 'Pisces', element: 'Water', crystal: 'aquamarine' }
+        };
+        
+        const CRYSTALS = {
+            carnelian: {
+                name: "Carnelian",
+                property: "Courage · Motivation",
+                use: "Hold before taking bold action. Ignites creative fire and warrior spirit."
+            },
+            rose_quartz: {
+                name: "Rose Quartz",
+                property: "Healing · Self-Love",
+                use: "Carry when you need tenderness. Gentle heart-opening and emotional healing."
+            },
+            clear_quartz: {
+                name: "Clear Quartz",
+                property: "Clarity · Amplification",
+                use: "Meditate with it when seeking answers. Amplifies intention and clears mental fog."
+            },
+            moonstone: {
+                name: "Moonstone",
+                property: "Intuition · Emotional Balance",
+                use: "Hold during moon phases. Supports emotional flow and inner knowing."
+            },
+            citrine: {
+                name: "Citrine",
+                property: "Abundance · Joy",
+                use: "Keep in workspace. Opens energy to prosperity and radiant confidence."
+            },
+            green_aventurine: {
+                name: "Green Aventurine",
+                property: "Growth · Opportunity",
+                use: "Carry when starting new projects. Attracts growth and lucky opportunities."
+            },
+            blue_lace_agate: {
+                name: "Blue Lace Agate",
+                property: "Peace · Communication",
+                use: "Hold during difficult conversations. Soothes anxiety and supports calm expression."
+            },
+            labradorite: {
+                name: "Labradorite",
+                property: "Transformation · Magic",
+                use: "Work with during transitions. Supports moving through change with grace and wonder."
+            },
+            amethyst: {
+                name: "Amethyst",
+                property: "Intuition · Spiritual Connection",
+                use: "Place under pillow or hold during meditation. Deepens inner knowing and wisdom."
+            },
+            black_tourmaline: {
+                name: "Black Tourmaline",
+                property: "Grounding · Protection",
+                use: "Hold when feeling scattered. Establishes energetic boundaries and grounds energy."
+            },
+            fluorite: {
+                name: "Fluorite",
+                property: "Focus · Mental Clarity",
+                use: "Keep at desk during work. Enhances concentration and organized thinking."
+            },
+            aquamarine: {
+                name: "Aquamarine",
+                property: "Calm · Flow",
+                use: "Hold near water or during meditation. Supports emotional flow and gentle courage."
+            }
+        };
+        
+        function getMoonPhase() {
+            const today = new Date();
+            const year = today.getFullYear();
+            let month = today.getMonth() + 1;
+            const day = today.getDate();
+            
+            let c = 0, e = 0, jd = 0, b = 0;
+            let adjustedYear = year;
+            
+            if (month < 3) {
+                adjustedYear--;
+                month += 12;
+            }
+            
+            ++month;
+            c = 365.25 * adjustedYear;
+            e = 30.6 * month;
+            jd = c + e + day - 694039.09;
+            jd /= 29.5305882;
+            b = parseInt(jd);
+            jd -= b;
+            b = Math.round(jd * 8);
+            
+            if (b >= 8) b = 0;
+            
+            const phases = [
+                { name: "New Moon", description: "New beginnings, setting intentions, planting seeds.", emoji: "🌑" },
+                { name: "Waxing Crescent", description: "Growth, momentum building, taking action.", emoji: "🌒" },
+                { name: "First Quarter", description: "Challenges arise, decisions needed, push through.", emoji: "🌓" },
+                { name: "Waxing Gibbous", description: "Refinement, adjustment, preparation.", emoji: "🌔" },
+                { name: "Full Moon", description: "Culmination, celebration, illumination.", emoji: "🌕" },
+                { name: "Waning Gibbous", description: "Gratitude, sharing wisdom, giving back.", emoji: "🌖" },
+                { name: "Last Quarter", description: "Release, forgiveness, letting go.", emoji: "🌗" },
+                { name: "Waning Crescent", description: "Rest, reflection, surrender.", emoji: "🌘" }
+            ];
+            
+            return phases[b];
+        }
+        
+        function getPoAReflection(element) {
+            const reflections = {
+                Fire: "Fire energy asks you to transform anger into boundary-setting, fear into courage. What bold action wants to emerge? Where does your inner flame need tending?",
+                Earth: "Earth energy invites you to ground. What physical ritual supports you today? Where can you plant seeds for slow, sustainable growth?",
+                Air: "Air energy calls for clarity. What thoughts need releasing? Where can mental spaciousness create room for new perspective?",
+                Water: "Water energy flows through emotion. What grief wants to transform into tenderness? Where can you honor your emotional truth?"
+            };
+            return reflections[element];
+        }
+        
+        async function selectSign(sign) {
+            const displayArea = document.getElementById('horoscopeDisplay');
+            const selectionArea = document.getElementById('zodiacSelection');
+            
+            selectionArea.classList.add('hidden');
+            displayArea.classList.remove('hidden');
+            displayArea.innerHTML = '<div class="loading">Channeling celestial guidance...</div>';
+            
+            const zodiac = ZODIAC_INFO[sign];
+            const moonPhase = getMoonPhase();
+            const crystal = CRYSTALS[zodiac.crystal];
+            
+            try {
+                // Fetch from Aztro API (free horoscope API)
+                const response = await fetch(`https://aztro.sameerkumar.website/?sign=${sign}&day=today`, {
+                    method: 'POST'
+                });
+                
+                const data = await response.json();
+                
+                // Build the display
+                let html = '<div class="horoscope-display">';
+                html += `<h2>${zodiac.symbol} ${zodiac.name}</h2>`;
+                
+                // Moon phase
+                html += `<div class="moon-phase-box">`;
+                html += `<div class="emoji">${moonPhase.emoji}</div>`;
+                html += `<div class="phase-name">${moonPhase.name}</div>`;
+                html += `<div class="phase-description">${moonPhase.description}</div>`;
+                html += `</div>`;
+                
+                // Today's date
+                html += `<p style="color: var(--aether-glow); text-align: center; margin: 1rem 0; font-style: italic;">${data.current_date}</p>`;
+                
+                // Horoscope text
+                html += `<h3>Celestial Guidance</h3>`;
+                html += `<div class="horoscope-text">${data.description}</div>`;
+                
+                // Path of Aether reflection
+                html += `<div class="poa-reflection">`;
+                html += `<h4>Path of Aether Reflection</h4>`;
+                html += `<p>${getPoAReflection(zodiac.element)}</p>`;
+                html += `<p style="margin-top: 1rem; font-style: italic; color: var(--moonlight);">Ritual suggestion: Take three breaths. Notice where this guidance lands in your body. What wants your attention today?</p>`;
+                html += `</div>`;
+                
+                // Crystal recommendation
+                html += `<div class="crystal-box">`;
+                html += `<h4>💎 Crystal Companion</h4>`;
+                html += `<div class="crystal-name">${crystal.name}</div>`;
+                html += `<div class="crystal-property">${crystal.property}</div>`;
+                html += `<div class="crystal-use">${crystal.use}</div>`;
+                html += `</div>`;
+                
+                // Additional insights
+                if (data.lucky_number) {
+                    html += `<p style="color: var(--aether-glow); margin-top: 1.5rem;"><strong>Energy Number:</strong> ${data.lucky_number}</p>`;
+                }
+                if (data.lucky_time) {
+                    html += `<p style="color: var(--aether-glow);"><strong>Peak Energy:</strong> ${data.lucky_time}</p>`;
+                }
+                if (data.color) {
+                    html += `<p style="color: var(--aether-glow);"><strong>Supportive Color:</strong> ${data.color}</p>`;
+                }
+                if (data.mood) {
+                    html += `<p style="color: var(--aether-glow);"><strong>Mood Energy:</strong> ${data.mood}</p>`;
+                }
+                
+                html += `<button onclick="resetHoroscope()">Choose Another Sign</button>`;
+                html += '</div>';
+                
+                displayArea.innerHTML = html;
+                
+            } catch (error) {
+                displayArea.innerHTML = `
+                    <div class="horoscope-display">
+                        <h2>${zodiac.symbol} ${zodiac.name}</h2>
+                        <p style="color: var(--aether-glow); margin: 2rem 0;">The stars are momentarily obscured. Please try again in a moment.</p>
+                        <p style="font-size: 0.9rem; color: var(--aether-glow); margin-top: 1rem;">Technical note: ${error.message}</p>
+                        <button onclick="resetHoroscope()">Try Again</button>
+                    </div>
+                `;
+            }
+        }
+        
+        function resetHoroscope() {
+            document.getElementById('zodiacSelection').classList.remove('hidden');
+            document.getElementById('horoscopeDisplay').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

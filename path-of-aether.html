@@ -109,23 +109,11 @@
             letter-spacing: 0.1em;
         }
         
-        .spread-category {
-            margin-bottom: 3rem;
-        }
-        
-        .category-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
-            color: var(--aether-glow);
-            margin-bottom: 1rem;
-            letter-spacing: 0.05em;
-        }
-        
         .spread-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
         
         .spread-card {
@@ -173,16 +161,6 @@
             font-size: 1rem;
         }
         
-        .spread-badge {
-            display: inline-block;
-            background: rgba(212, 175, 55, 0.2);
-            color: var(--gold-accent);
-            padding: 0.25rem 0.75rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 0.5rem;
-        }
-        
         .card-area {
             min-height: 400px;
             display: flex;
@@ -191,11 +169,12 @@
             gap: 1.5rem;
             flex-wrap: wrap;
             margin: 3rem 0;
+            padding: 1rem;
         }
         
         .tarot-card {
             width: 180px;
-            height: 280px;
+            height: 300px;
             background: linear-gradient(135deg, var(--deep-space), var(--cosmic-purple));
             border: 2px solid var(--gold-accent);
             border-radius: 8px;
@@ -212,21 +191,22 @@
             overflow: hidden;
         }
         
-        .tarot-card.small {
-            width: 165px;
-            height: 250px;
-            padding: 1.25rem;
+        /* Special styling for single card */
+        .card-area:has(.tarot-card:only-child) .tarot-card {
+            width: 220px;
+            height: 360px;
+            padding: 2rem;
         }
         
-        @media (max-width: 768px) {
-            .tarot-card {
-                width: 150px;
-                height: 240px;
-            }
-            .tarot-card.small {
-                width: 140px;
-                height: 220px;
-            }
+        /* Tighter spacing for 5-card spreads */
+        .card-area:has(.tarot-card:nth-child(5)) {
+            gap: 1rem;
+        }
+        
+        .card-area:has(.tarot-card:nth-child(5)) .tarot-card {
+            width: 160px;
+            height: 280px;
+            padding: 1.25rem;
         }
         
         .tarot-card::before {
@@ -246,15 +226,10 @@
         }
         
         .tarot-card.pos-1 { animation-delay: 0.1s; }
-        .tarot-card.pos-2 { animation-delay: 0.2s; }
-        .tarot-card.pos-3 { animation-delay: 0.3s; }
-        .tarot-card.pos-4 { animation-delay: 0.4s; }
-        .tarot-card.pos-5 { animation-delay: 0.5s; }
-        .tarot-card.pos-6 { animation-delay: 0.6s; }
-        .tarot-card.pos-7 { animation-delay: 0.7s; }
-        .tarot-card.pos-8 { animation-delay: 0.8s; }
-        .tarot-card.pos-9 { animation-delay: 0.9s; }
-        .tarot-card.pos-10 { animation-delay: 1.0s; }
+        .tarot-card.pos-2 { animation-delay: 0.3s; }
+        .tarot-card.pos-3 { animation-delay: 0.5s; }
+        .tarot-card.pos-4 { animation-delay: 0.7s; }
+        .tarot-card.pos-5 { animation-delay: 0.9s; }
         
         @keyframes cardReveal {
             from {
@@ -269,44 +244,29 @@
         
         .card-name {
             font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--gold-accent);
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
-            line-height: 1.3;
-        }
-        
-        .tarot-card.small .card-name {
-            font-size: 1.15rem;
-        }
-        
-        .card-themes {
-            font-size: 0.95rem;
-            color: var(--moonlight);
-            font-style: italic;
-            position: relative;
-            z-index: 1;
-            line-height: 1.4;
-        }
-        
-        .tarot-card.small .card-themes {
-            font-size: 0.85rem;
-        }
-        
-        .card-position {
-            font-size: 0.95rem;
-            color: var(--starlight);
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
             margin-bottom: 0.75rem;
             position: relative;
             z-index: 1;
-            line-height: 1.4;
         }
         
-        .tarot-card.small .card-position {
+        .card-themes {
             font-size: 0.85rem;
+            color: var(--aether-glow);
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .card-position {
+            font-size: 0.9rem;
+            color: var(--moonlight);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
         }
         
         .interpretation {
@@ -331,63 +291,6 @@
         .interpretation p {
             margin-bottom: 1rem;
             color: var(--moonlight);
-        }
-        
-        .disclaimer {
-            background: rgba(74, 63, 110, 0.3);
-            border-left: 3px solid var(--gold-accent);
-            padding: 1rem 1.5rem;
-            margin: 1.5rem 0;
-            font-size: 0.95rem;
-            color: var(--aether-glow);
-            font-style: italic;
-        }
-        
-        .crystal-section {
-            background: rgba(26, 26, 46, 0.5);
-            border: 1px solid var(--aether-glow);
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .crystal-section h4 {
-            font-family: 'Cinzel', serif;
-            color: var(--gold-accent);
-            margin-bottom: 1rem;
-        }
-        
-        .crystal-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .crystal-card {
-            background: rgba(74, 63, 110, 0.2);
-            padding: 1rem;
-            border-radius: 8px;
-            border: 1px solid var(--cosmic-purple);
-        }
-        
-        .crystal-name {
-            font-family: 'Cinzel', serif;
-            color: var(--moonlight);
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .crystal-property {
-            color: var(--aether-glow);
-            font-size: 0.9rem;
-            font-style: italic;
-            margin-bottom: 0.5rem;
-        }
-        
-        .crystal-use {
-            color: var(--starlight);
-            font-size: 0.95rem;
         }
         
         button {
@@ -599,125 +502,71 @@
         <div id="spreadSelection" class="phase">
             <h2 class="phase-title">Choose Your Path</h2>
             
-            <div class="spread-category">
-                <h3 class="category-title">Quick Guidance</h3>
-                <div class="spread-grid">
-                    <div class="spread-card" onclick="selectSpread('daily')">
-                        <span class="spread-badge">1 Card</span>
-                        <h3>Daily Guidance</h3>
-                        <p>What do I need to know today?</p>
-                    </div>
-                    <div class="spread-card" onclick="selectSpread('quick')">
-                        <span class="spread-badge">1 Card</span>
-                        <h3>Quick Insight</h3>
-                        <p>Immediate clarity on what's present now.</p>
-                    </div>
+            <h3 style="font-family: 'Cinzel', serif; color: var(--aether-glow); font-size: 1.1rem; margin: 2rem 0 1rem 0; letter-spacing: 0.1em;">QUICK GUIDANCE</h3>
+            <div class="spread-grid">
+                <div class="spread-card" onclick="selectSpread('daily')">
+                    <h3>Daily Guidance</h3>
+                    <p>One card. What I need to know today.</p>
+                </div>
+                <div class="spread-card" onclick="selectSpread('moonCycle')">
+                    <h3>Moon Cycle Reflection</h3>
+                    <p>What's waxing, full, and waning in your life.</p>
                 </div>
             </div>
             
-            <div class="spread-category">
-                <h3 class="category-title">Path of Aether · Therapeutic</h3>
-                <div class="spread-grid">
-                    <div class="spread-card" onclick="selectSpread('regulation')">
-                        <span class="spread-badge">3 Cards</span>
-                        <h3>Regulation Check-In</h3>
-                        <p>What's dysregulated? What supports me? What grounds me?</p>
-                    </div>
-                    <div class="spread-card" onclick="selectSpread('grief')">
-                        <span class="spread-badge">3 Cards</span>
-                        <h3>Grief Transmutation</h3>
-                        <p>What am I holding? What wants to transform? What tenderness emerges?</p>
-                    </div>
-                    <div class="spread-card" onclick="selectSpread('boundary')">
-                        <span class="spread-badge">3 Cards</span>
-                        <h3>Boundary Setting</h3>
-                        <p>What's the truth? What's mine to hold? What can I release?</p>
-                    </div>
-                    <div class="spread-card" onclick="selectSpread('moonCycle')">
-                        <span class="spread-badge">3 Cards</span>
-                        <h3>Moon Cycle Reflection</h3>
-                        <p>What's waxing (growing), full (culminating), waning (releasing)?</p>
-                    </div>
+            <h3 style="font-family: 'Cinzel', serif; color: var(--aether-glow); font-size: 1.1rem; margin: 2rem 0 1rem 0; letter-spacing: 0.1em;">EMOTIONAL HEALING</h3>
+            <div class="spread-grid">
+                <div class="spread-card" onclick="selectSpread('regulation')">
+                    <h3>Regulation Check-In</h3>
+                    <p>What's dysregulated? What supports me? What grounds me?</p>
+                </div>
+                <div class="spread-card" onclick="selectSpread('grief')">
+                    <h3>Grief Transmutation</h3>
+                    <p>What am I holding? What wants to transform? What tenderness emerges?</p>
+                </div>
+                <div class="spread-card" onclick="selectSpread('boundary')">
+                    <h3>Boundary Setting</h3>
+                    <p>What's the truth? What's mine to hold? What can I release?</p>
                 </div>
             </div>
             
-            <div class="spread-category">
-                <h3 class="category-title">Career & Business</h3>
-                <div class="spread-grid">
-                    <div class="spread-card" onclick="selectSpread('career')">
-                        <span class="spread-badge">3 Cards</span>
-                        <h3>Career Clarity</h3>
-                        <p>What I bring. What I'm seeking. Next right step.</p>
-                    </div>
-                    <div class="spread-card" onclick="selectSpread('project')">
-                        <span class="spread-badge">3 Cards</span>
-                        <h3>Project Vitality</h3>
-                        <p>What's alive? What's blocking flow? How to move forward?</p>
-                    </div>
-                    <div class="spread-card" onclick="selectSpread('business')">
-                        <span class="spread-badge">3 Cards</span>
-                        <h3>Business Direction</h3>
-                        <p>Current foundation. Growth path. What wants to emerge.</p>
-                    </div>
-                    <div class="spread-card" onclick="selectSpread('consulting')">
-                        <span class="spread-badge">5 Cards</span>
-                        <h3>Consulting Offer</h3>
-                        <p>What I offer. Who it serves. Positioning. First step. Market energy.</p>
-                    </div>
-                    <div class="spread-card" onclick="selectSpread('productLaunch')">
-                        <span class="spread-badge">5 Cards</span>
-                        <h3>Product Launch</h3>
-                        <p>Product energy. Timing. Blind spots. Strengths. Next move.</p>
-                    </div>
+            <h3 style="font-family: 'Cinzel', serif; color: var(--aether-glow); font-size: 1.1rem; margin: 2rem 0 1rem 0; letter-spacing: 0.1em;">CAREER & WORK</h3>
+            <div class="spread-grid">
+                <div class="spread-card" onclick="selectSpread('career')">
+                    <h3>Career Clarity</h3>
+                    <p>What I bring. What I'm seeking. Next right step.</p>
+                </div>
+                <div class="spread-card" onclick="selectSpread('project')">
+                    <h3>Project Vitality</h3>
+                    <p>What's alive here? What's blocking flow? How to move forward?</p>
+                </div>
+                <div class="spread-card" onclick="selectSpread('business')">
+                    <h3>Business Direction</h3>
+                    <p>Current foundation. Growth path. What wants to emerge.</p>
                 </div>
             </div>
             
-            <div class="spread-category">
-                <h3 class="category-title">Financial Reflection</h3>
-                <p style="font-size: 0.9rem; color: var(--aether-glow); margin-bottom: 1rem; font-style: italic;">For personal reflection only, not financial advice.</p>
-                <div class="spread-grid">
-                    <div class="spread-card" onclick="selectSpread('moneyMindset')">
-                        <span class="spread-badge">3 Cards</span>
-                        <h3>Money Mindset</h3>
-                        <p>Current money story. What blocks abundance? Path to peace.</p>
-                    </div>
-                    <div class="spread-card" onclick="selectSpread('prosperity')">
-                        <span class="spread-badge">5 Cards</span>
-                        <h3>Prosperity Path</h3>
-                        <p>Financial energy. Blocks. Cultivation. Action. Outcome.</p>
-                    </div>
-                    <div class="spread-card" onclick="selectSpread('abundanceFlow')">
-                        <span class="spread-badge">5 Cards</span>
-                        <h3>Abundance & Flow</h3>
-                        <p>Foundation. Release. Cultivate. Support. Forward path.</p>
-                    </div>
+            <h3 style="font-family: 'Cinzel', serif; color: var(--aether-glow); font-size: 1.1rem; margin: 2rem 0 1rem 0; letter-spacing: 0.1em;">ABUNDANCE & PROSPERITY</h3>
+            <div class="spread-grid">
+                <div class="spread-card" onclick="selectSpread('prosperity')">
+                    <h3>Prosperity Path</h3>
+                    <p>Five-card deep dive into financial energy and abundance blocks.</p>
+                </div>
+                <div class="spread-card" onclick="selectSpread('fortune')">
+                    <h3>Fortune & Opportunity</h3>
+                    <p>Hidden opportunities, luck factors, where to invest energy.</p>
+                </div>
+                <div class="spread-card" onclick="selectSpread('money')">
+                    <h3>Money Wisdom</h3>
+                    <p>Your relationship with money and path to stability.</p>
                 </div>
             </div>
             
-            <div class="spread-category">
-                <h3 class="category-title">Decision Making</h3>
-                <div class="spread-grid">
-                    <div class="spread-card" onclick="selectSpread('decision')">
-                        <span class="spread-badge">5 Cards</span>
-                        <h3>Decision Guidance</h3>
-                        <p>Situation. Option A. Option B. Blind spot. Guidance forward.</p>
-                    </div>
-                    <div class="spread-card" onclick="selectSpread('deepDive')">
-                        <span class="spread-badge">5 Cards</span>
-                        <h3>Deep Exploration</h3>
-                        <p>Current state. Hidden influence. Helps. Hinders. Outcome.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="spread-category">
-                <h3 class="category-title">Comprehensive Reading</h3>
-                <div class="spread-grid">
-                    <div class="spread-card" onclick="selectSpread('celticCross')">
-                        <span class="spread-badge">10 Cards</span>
-                        <h3>Celtic Cross</h3>
-                        <p>The most comprehensive traditional spread. Deep insight into any situation.</p>
-                    </div>
+            <h3 style="font-family: 'Cinzel', serif; color: var(--aether-glow); font-size: 1.1rem; margin: 2rem 0 1rem 0; letter-spacing: 0.1em;">DECISION MAKING</h3>
+            <div class="spread-grid">
+                <div class="spread-card" onclick="selectSpread('decision')">
+                    <h3>Decision Guidance</h3>
+                    <p>Weighing options, blind spots, and guidance forward.</p>
                 </div>
             </div>
         </div>
@@ -761,6 +610,16 @@
         <div id="interpretationArea" class="hidden"></div>
         
         <footer>
+            <div style="margin-bottom: 2rem; padding: 1.5rem; background: rgba(212, 55, 55, 0.1); border: 1px solid rgba(212, 55, 55, 0.3); border-radius: 8px;">
+                <strong style="color: #d43737;">If you're in crisis:</strong><br>
+                <span style="font-size: 0.95rem;">
+                USA: 988 (call/text) • Text HELLO to 741741<br>
+                International: <a href="https://findahelpline.com" target="_blank" style="color: var(--gold-accent); text-decoration: underline;">findahelpline.com</a>
+                </span>
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <a href="index.html" style="color: var(--gold-accent); text-decoration: none; letter-spacing: 0.1em;">← Back to Home</a>
+            </div>
             Regulation · Reflection · Ritual
         </footer>
     </div>
@@ -1027,185 +886,116 @@
         ];
         
         const CRYSTALS = {
-            grounding: {
-                name: "Black Tourmaline",
-                property: "Grounding · Protection",
-                use: "Hold when feeling scattered or anxious. Place near workspace to establish energetic boundaries."
-            },
-            clarity: {
-                name: "Clear Quartz",
-                property: "Clarity · Amplification",
-                use: "Meditate with it when seeking answers. Amplifies intention and clears mental fog."
-            },
-            abundance: {
-                name: "Citrine",
-                property: "Abundance · Joy",
-                use: "Keep in wallet or workspace. Opens energy to prosperity and positive manifestation."
-            },
-            intuition: {
-                name: "Amethyst",
-                property: "Intuition · Spiritual Connection",
-                use: "Place under pillow or hold during meditation. Deepens inner knowing and dream recall."
-            },
-            healing: {
-                name: "Rose Quartz",
-                property: "Healing · Self-Love",
-                use: "Carry when processing grief or heartbreak. Gentle heart-opening and emotional healing."
-            },
-            courage: {
-                name: "Carnelian",
-                property: "Courage · Motivation",
-                use: "Hold before important meetings or decisions. Ignites creative fire and bold action."
-            },
-            peace: {
-                name: "Blue Lace Agate",
-                property: "Peace · Communication",
-                use: "Carry during difficult conversations. Soothes anxiety and supports calm expression."
-            },
-            transformation: {
-                name: "Labradorite",
-                property: "Transformation · Magic",
-                use: "Work with during transitions. Supports moving through change with grace and wonder."
-            },
-            focus: {
-                name: "Fluorite",
-                property: "Focus · Mental Clarity",
-                use: "Keep at desk during work. Enhances concentration and organized thinking."
-            },
-            release: {
-                name: "Selenite",
-                property: "Cleansing · Release",
-                use: "Use to clear other crystals or your own energy. Helps release what no longer serves."
-            }
+            grounding: [
+                { name: "Black Tourmaline", properties: "Protection, grounding, clearing negative energy. Anchors you to earth while deflecting what doesn't serve." },
+                { name: "Hematite", properties: "Grounding, focus, manifestation. Pulls scattered energy into your body and strengthens your root." },
+                { name: "Smoky Quartz", properties: "Grounding, release, transmutation. Absorbs heavy energy and returns you to center." },
+                { name: "Red Jasper", properties: "Stability, endurance, vitality. Earth energy that supports you through challenge." }
+            ],
+            clarity: [
+                { name: "Clear Quartz", properties: "Amplification, clarity, intention. The master healer that magnifies your focus." },
+                { name: "Fluorite", properties: "Mental clarity, focus, decision-making. Cuts through confusion and organizes scattered thoughts." },
+                { name: "Selenite", properties: "Clarity, cleansing, divine connection. High vibration that clears mental fog." },
+                { name: "Lapis Lazuli", properties: "Wisdom, truth, inner vision. Opens the third eye and speaks your truth." }
+            ],
+            abundance: [
+                { name: "Citrine", properties: "Abundance, joy, manifestation. The merchant's stone that attracts prosperity." },
+                { name: "Pyrite", properties: "Confidence, willpower, abundance. Masculine energy that takes action toward wealth." },
+                { name: "Green Aventurine", properties: "Luck, opportunity, heart-centered abundance. Opens you to receive." },
+                { name: "Tiger's Eye", properties: "Confidence, practical action, manifestation. Grounded power that builds wealth." }
+            ],
+            emotional: [
+                { name: "Rose Quartz", properties: "Self-love, compassion, emotional healing. Gentle heart opener." },
+                { name: "Moonstone", properties: "Intuition, cycles, emotional balance. Divine feminine that honors your rhythm." },
+                { name: "Amethyst", properties: "Peace, spiritual protection, emotional sobriety. Transmutes pain into wisdom." },
+                { name: "Lepidolite", properties: "Stress relief, emotional balance, transition. Contains natural lithium for nervous system support." }
+            ],
+            transformation: [
+                { name: "Labradorite", properties: "Transformation, magic, perseverance. Stone of destiny and deep change." },
+                { name: "Malachite", properties: "Transformation, protection, breaking patterns. Powerful heart healer that demands growth." },
+                { name: "Obsidian", properties: "Shadow work, protection, truth. Reveals what's hidden and demands honesty." },
+                { name: "Garnet", properties: "Passion, commitment, transformation through action. Activates root and heart." }
+            ],
+            protection: [
+                { name: "Black Obsidian", properties: "Psychic protection, shadow work, grounding. Shields and reveals truth." },
+                { name: "Labradorite", properties: "Auric protection, deflecting negativity, strengthening boundaries. Rainbow shield." },
+                { name: "Amethyst", properties: "Spiritual protection, purification, higher connection. Protective and elevating." },
+                { name: "Black Tourmaline", properties: "Grounding protection, energy clearing, boundary setting. The ultimate shield." }
+            ],
+            courage: [
+                { name: "Carnelian", properties: "Courage, vitality, creative action. Fire in your belly." },
+                { name: "Sunstone", properties: "Joy, confidence, empowerment. Masculine solar energy that says yes." },
+                { name: "Tiger's Eye", properties: "Courage, practical strength, confidence. Grounded warrior energy." },
+                { name: "Red Jasper", properties: "Endurance, grounding courage, steady strength. Earth warrior." }
+            ],
+            intuition: [
+                { name: "Moonstone", properties: "Intuition, divine feminine, inner knowing. Trust the cycles." },
+                { name: "Labradorite", properties: "Psychic abilities, magic, synchronicity. Stone of serendipity." },
+                { name: "Lapis Lazuli", properties: "Third eye activation, truth, inner vision. Ancient wisdom keeper." },
+                { name: "Amethyst", properties: "Spiritual connection, intuition, divine guidance. Crown chakra opener." }
+            ]
         };
         
         const SPREADS = {
-            // 1-CARD SPREADS
             daily: {
                 title: "Daily Guidance",
-                count: 1,
                 positions: ["What I need to know today"],
-                crystals: ["clarity", "grounding"]
+                count: 1
             },
-            quick: {
-                title: "Quick Insight",
-                count: 1,
-                positions: ["What's present right now?"],
-                crystals: ["intuition", "clarity"]
-            },
-            
-            // 3-CARD SPREADS - Path of Aether
             regulation: {
                 title: "Regulation Check-In",
-                count: 3,
                 positions: ["What's dysregulated?", "What supports me?", "What grounds me?"],
-                crystals: ["grounding", "peace", "healing"]
+                count: 3
             },
             grief: {
                 title: "Grief Transmutation",
-                count: 3,
                 positions: ["What am I holding?", "What wants to transform?", "What tenderness emerges?"],
-                crystals: ["healing", "transformation", "peace"]
+                count: 3
             },
             boundary: {
                 title: "Boundary Setting",
-                count: 3,
                 positions: ["What's the truth?", "What's mine to hold?", "What can I release?"],
-                crystals: ["clarity", "courage", "release"]
+                count: 3
             },
-            moonCycle: {
-                title: "Moon Cycle Reflection",
-                count: 3,
-                positions: ["What's waxing (growing)", "What's full (culminating)", "What's waning (releasing)"],
-                crystals: ["intuition", "transformation", "release"]
-            },
-            
-            // 3-CARD SPREADS - Career & Business
             career: {
                 title: "Career Clarity",
-                count: 3,
                 positions: ["What I bring", "What I'm seeking", "Next right step"],
-                crystals: ["clarity", "courage", "abundance"]
+                count: 3
             },
             project: {
                 title: "Project Vitality",
-                count: 3,
                 positions: ["What's alive here?", "What's blocking flow?", "How to move forward?"],
-                crystals: ["focus", "clarity", "courage"]
+                count: 3
             },
             business: {
                 title: "Business Direction",
-                count: 3,
                 positions: ["Current foundation", "Growth path", "What wants to emerge"],
-                crystals: ["grounding", "abundance", "transformation"]
-            },
-            
-            // 3-CARD SPREADS - Financial
-            moneyMindset: {
-                title: "Money Mindset Check-In",
-                count: 3,
-                disclaimer: true,
-                positions: ["Current money story", "What blocks abundance?", "Path to financial peace"],
-                crystals: ["abundance", "release", "grounding"]
-            },
-            
-            // 5-CARD SPREADS
-            deepDive: {
-                title: "Deep Exploration",
-                count: 5,
-                positions: ["Current state", "Hidden influence", "What helps?", "What hinders?", "Outcome energy"],
-                crystals: ["clarity", "intuition", "transformation"]
-            },
-            consulting: {
-                title: "Consulting Offer Clarity",
-                count: 5,
-                positions: ["What I uniquely offer", "Who this serves", "Market energy", "How to position", "First step"],
-                crystals: ["clarity", "courage", "abundance"]
-            },
-            productLaunch: {
-                title: "Product Launch Readiness",
-                count: 5,
-                positions: ["Product energy", "Market timing", "What I'm overlooking", "Strength to leverage", "Next move"],
-                crystals: ["focus", "courage", "abundance"]
+                count: 3
             },
             prosperity: {
                 title: "Prosperity Path",
-                count: 5,
-                disclaimer: true,
-                positions: ["Current financial energy", "What blocks abundance?", "What to cultivate", "Action to take", "Outcome energy"],
-                crystals: ["abundance", "release", "transformation"]
+                positions: ["Current financial energy", "What blocks abundance?", "How to attract prosperity?", "Action to take", "Outcome energy"],
+                count: 5
             },
-            abundanceFlow: {
-                title: "Abundance & Flow",
-                count: 5,
-                disclaimer: true,
-                positions: ["Current foundation", "What to release", "What to cultivate", "Unexpected support", "Path forward"],
-                crystals: ["abundance", "grounding", "transformation"]
+            fortune: {
+                title: "Fortune & Opportunity",
+                positions: ["Hidden opportunity", "What I'm overlooking", "Luck factor", "Where to invest energy", "Potential outcome"],
+                count: 5
+            },
+            money: {
+                title: "Money Wisdom",
+                positions: ["My relationship with money", "What needs healing?", "Path to stability"],
+                count: 3
             },
             decision: {
                 title: "Decision Guidance",
-                count: 5,
                 positions: ["The situation", "Option A energy", "Option B energy", "What I'm not seeing", "Guidance forward"],
-                crystals: ["clarity", "intuition", "courage"]
+                count: 5
             },
-            
-            // 10-CARD CELTIC CROSS
-            celticCross: {
-                title: "Celtic Cross (Comprehensive)",
-                count: 10,
-                positions: [
-                    "Present situation",
-                    "Challenge/Crossing",
-                    "Foundation/Root cause",
-                    "Recent past",
-                    "Crown/Best outcome",
-                    "Near future",
-                    "Your approach",
-                    "External influences",
-                    "Hopes and fears",
-                    "Final outcome"
-                ],
-                crystals: ["clarity", "intuition", "grounding", "transformation"]
+            moonCycle: {
+                title: "Moon Cycle Reflection",
+                positions: ["What's waxing (growing)", "What's full (culminating)", "What's waning (releasing)"],
+                count: 3
             }
         };
         
@@ -1257,9 +1047,10 @@
             // Capture intention
             userIntention = document.getElementById('intentionInput').value.trim();
             
-            // Draw cards with reversed chance
+            // Draw cards based on spread count
+            const cardCount = currentSpread.count;
             const shuffled = [...TAROT_DECK].sort(() => Math.random() - 0.5);
-            drawnCards = shuffled.slice(0, currentSpread.count).map(card => ({
+            drawnCards = shuffled.slice(0, cardCount).map(card => ({
                 ...card,
                 isReversed: Math.random() < 0.4 // 40% chance of reversed
             }));
@@ -1274,38 +1065,69 @@
             const cardArea = document.getElementById('cardArea');
             cardArea.innerHTML = '';
             
-            // Use smaller cards only for Celtic Cross
-            const cardClass = currentSpread.count === 10 ? 'tarot-card small' : 'tarot-card';
-            
             drawnCards.forEach((card, index) => {
                 const cardEl = document.createElement('div');
-                cardEl.className = `${cardClass} pos-${index + 1}`;
+                cardEl.className = `tarot-card pos-${index + 1}`;
                 cardEl.innerHTML = `
                     <div class="card-position">${currentSpread.positions[index]}</div>
-                    <div class="card-name">${card.name}${card.isReversed ? ' (R)' : ''}</div>
+                    <div class="card-name">${card.name}${card.isReversed ? ' (Reversed)' : ''}</div>
                     <div class="card-themes">${card.themes}</div>
                 `;
                 cardArea.appendChild(cardEl);
             });
         }
         
+        function getCrystalRecommendation() {
+            // Analyze the reading for crystal recommendation
+            const suits = drawnCards.map(c => c.suit);
+            const hasReversed = drawnCards.some(c => c.isReversed);
+            const hasMajor = suits.includes('major');
+            const hasSwords = suits.includes('swords');
+            const hasCups = suits.includes('cups');
+            const hasPentacles = suits.includes('pentacles');
+            const hasWands = suits.includes('wands');
+            
+            // Determine dominant energy
+            let crystalCategory = 'grounding'; // default
+            
+            if (hasSwords && hasReversed) {
+                crystalCategory = 'clarity'; // Mental challenges need clarity
+            } else if (hasCups) {
+                crystalCategory = 'emotional'; // Cups are emotional
+            } else if (hasPentacles) {
+                crystalCategory = 'abundance'; // Pentacles are material
+            } else if (hasWands) {
+                crystalCategory = 'courage'; // Wands are action
+            } else if (hasMajor) {
+                crystalCategory = 'transformation'; // Major arcana = big changes
+            }
+            
+            // Pick a random crystal from the category
+            const crystals = CRYSTALS[crystalCategory];
+            const crystal = crystals[Math.floor(Math.random() * crystals.length)];
+            
+            return { ...crystal, category: crystalCategory };
+        }
+        
         function getMoonPhase() {
             const today = new Date();
             const year = today.getFullYear();
-            let month = today.getMonth() + 1;
+            const month = today.getMonth() + 1;
             const day = today.getDate();
             
             // Simplified moon phase calculation
-            let c = 0, e = 0, jd = 0, b = 0;
-            let adjustedYear = year;
+            let c = 0;
+            let e = 0;
+            let jd = 0;
+            let b = 0;
             
             if (month < 3) {
-                adjustedYear--;
+                year--;
                 month += 12;
             }
             
             ++month;
-            c = 365.25 * adjustedYear;
+            c = 365.25 * year;
             e = 30.6 * month;
             jd = c + e + day - 694039.09;
             jd /= 29.5305882;
@@ -1329,28 +1151,18 @@
             return phases[b];
         }
         
-        function getCrystalRecommendations() {
-            if (!currentSpread.crystals) return [];
-            return currentSpread.crystals.map(key => CRYSTALS[key]);
-        }
-        
-        function getInterpretation() {
+        async function getInterpretation() {
             const interpretationArea = document.getElementById('interpretationArea');
             interpretationArea.classList.remove('hidden');
             interpretationArea.innerHTML = '<div class="loading">Weaving the threads of meaning...</div>';
             
-            // Get moon phase
+            // Get moon phase and crystal
             const moonPhase = getMoonPhase();
-            const crystals = getCrystalRecommendations();
+            const crystal = getCrystalRecommendation();
             
             // Build interpretation from traditional meanings
             let interpretationHTML = '<div class="interpretation">';
             interpretationHTML += '<h3>Guidance from the Aether</h3>';
-            
-            // Financial disclaimer if needed
-            if (currentSpread.disclaimer) {
-                interpretationHTML += '<div class="disclaimer">⚠️ This reading is for personal reflection only and does not constitute financial advice. Please consult a qualified financial professional for monetary decisions.</div>';
-            }
             
             // Show moon phase
             interpretationHTML += `<div style="text-align: center; margin: 2rem 0; padding: 1.5rem; background: rgba(74, 63, 110, 0.3); border-radius: 8px;">`;
@@ -1379,25 +1191,20 @@
             interpretationHTML += `<h4 style="font-family: 'Cinzel', serif; color: var(--gold-accent); margin-bottom: 1rem;">Weaving the Threads</h4>`;
             interpretationHTML += `<p>These cards speak to where you are in this moment. Each offers insight into the question you brought to the reading. The meanings are traditional; your interpretation makes them personal.</p>`;
             interpretationHTML += `<p>Consider how these themes interact with each other. What patterns emerge? What calls for your attention? What wants to transform?</p>`;
-            interpretationHTML += `<p style="margin-top: 1.5rem; font-style: italic; color: var(--moonlight);">Ritual suggestion: Journal on what each card stirs in you. Let the cards be mirrors, not prescriptions. The wisdom you seek is already within you.</p>`;
             interpretationHTML += `</div>`;
             
-            // Crystal recommendations
-            if (crystals.length > 0) {
-                interpretationHTML += `<div class="crystal-section">`;
-                interpretationHTML += `<h4>💎 Crystal Companions</h4>`;
-                interpretationHTML += `<p style="color: var(--moonlight); margin-bottom: 1rem;">These crystals support the energy of this reading:</p>`;
-                interpretationHTML += `<div class="crystal-grid">`;
-                crystals.forEach(crystal => {
-                    interpretationHTML += `<div class="crystal-card">`;
-                    interpretationHTML += `<div class="crystal-name">${crystal.name}</div>`;
-                    interpretationHTML += `<div class="crystal-property">${crystal.property}</div>`;
-                    interpretationHTML += `<div class="crystal-use">${crystal.use}</div>`;
-                    interpretationHTML += `</div>`;
-                });
-                interpretationHTML += `</div>`;
-                interpretationHTML += `</div>`;
-            }
+            // Crystal recommendation
+            interpretationHTML += `<div style="margin-top: 2.5rem; padding: 2rem; background: rgba(74, 63, 110, 0.3); border-radius: 8px; border: 1px solid var(--gold-accent);">`;
+            interpretationHTML += `<h4 style="font-family: 'Cinzel', serif; color: var(--gold-accent); margin-bottom: 1rem;">💎 Crystal Support</h4>`;
+            interpretationHTML += `<div style="font-size: 1.3rem; color: var(--moonlight); margin-bottom: 0.5rem;">${crystal.name}</div>`;
+            interpretationHTML += `<p style="color: var(--starlight); line-height: 1.8;">${crystal.properties}</p>`;
+            interpretationHTML += `<p style="margin-top: 1rem; font-style: italic; color: var(--aether-glow); font-size: 0.95rem;">This reading carries ${crystal.category} energy. Carry this stone, hold it during meditation, or place it on your desk as you integrate this guidance.</p>`;
+            interpretationHTML += `</div>`;
+            
+            // Ritual suggestion
+            interpretationHTML += `<div style="margin-top: 2rem;">`;
+            interpretationHTML += `<p style="font-style: italic; color: var(--aether-glow);">Ritual suggestion: Journal on what each card stirs in you. Let the cards be mirrors, not prescriptions. The wisdom you seek is already within you.</p>`;
+            interpretationHTML += `</div>`;
             
             interpretationHTML += '</div>';
             

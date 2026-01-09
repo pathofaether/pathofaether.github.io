@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About & Disclaimer · Path of Aether</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@300;400&display=swap');
+        
+        :root {
+            --void: #0a0a12;
+            --deep-space: #1a1a2e;
+            --cosmic-purple: #4a3f6e;
+            --aether-glow: #8b7fb8;
+            --moonlight: #c9c3d8;
+            --starlight: #e8e4f0;
+            --gold-accent: #d4af37;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: var(--void);
+            color: var(--starlight);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(2px 2px at 20% 30%, white, transparent),
+                radial-gradient(2px 2px at 60% 70%, white, transparent),
+                radial-gradient(1px 1px at 50% 50%, white, transparent),
+                radial-gradient(1px 1px at 80% 10%, white, transparent),
+                radial-gradient(2px 2px at 90% 60%, white, transparent),
+                radial-gradient(1px 1px at 33% 80%, white, transparent);
+            background-size: 200% 200%;
+            background-position: 0 0, 40px 60px, 130px 270px, 70px 100px, 150px 200px, 90px 180px;
+            opacity: 0.3;
+            animation: twinkle 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.5; }
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeIn 1.2s ease-out;
+        }
+        
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--moonlight), var(--aether-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--aether-glow);
+            letter-spacing: 0.2em;
+            font-weight: 300;
+        }
+        
+        .section {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid var(--aether-glow);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            letter-spacing: 0.1em;
+        }
+        
+        .section h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--moonlight);
+            margin: 2rem 0 1rem 0;
+            font-size: 1.4rem;
+        }
+        
+        .section p {
+            color: var(--moonlight);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section li {
+            color: var(--moonlight);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+        
+        .crisis-box {
+            background: linear-gradient(135deg, rgba(212, 55, 55, 0.2), rgba(139, 127, 184, 0.2));
+            border: 2px solid var(--gold-accent);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .crisis-box h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        
+        .crisis-box p {
+            color: var(--starlight);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .crisis-resources {
+            background: rgba(26, 26, 46, 0.6);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+        
+        .crisis-resources div {
+            color: var(--starlight);
+            font-size: 1.1rem;
+            margin: 0.75rem 0;
+            text-align: center;
+        }
+        
+        .warning-icon {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .important-box {
+            background: rgba(74, 63, 110, 0.3);
+            border-left: 3px solid var(--gold-accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        
+        .important-box strong {
+            color: var(--gold-accent);
+        }
+        
+        .back-link {
+            text-align: center;
+            margin: 3rem 0 2rem 0;
+        }
+        
+        .back-link a {
+            color: var(--gold-accent);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link a:hover {
+            color: var(--moonlight);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding: 2rem;
+            color: var(--aether-glow);
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ABOUT & DISCLAIMER</h1>
+            <p class="subtitle">Transparency · Ethics · Responsibility</p>
+        </header>
+        
+        <div class="crisis-box">
+            <div class="warning-icon">🆘</div>
+            <h2>Need Immediate Support?</h2>
+            <p>Path of Aether practices are for reflection and self-care, but they are not crisis intervention.</p>
+            <p><strong>If you're experiencing thoughts of harming yourself or others, severe emotional distress, or a mental health emergency, please reach out immediately:</strong></p>
+            <div class="crisis-resources">
+                <div style="font-weight: bold; margin-bottom: 1rem; color: var(--gold-accent);">United States</div>
+                <div><strong>988 Suicide & Crisis Lifeline</strong> · Call or text 988</div>
+                <div><strong>Crisis Text Line</strong> · Text HELLO to 741741</div>
+                <div><strong>SAMHSA National Helpline</strong> · 1-800-662-4357</div>
+                <div><strong>Emergency Services</strong> · Call 911 or go to your nearest emergency room</div>
+                
+                <div style="font-weight: bold; margin: 1.5rem 0 1rem 0; color: var(--gold-accent);">International</div>
+                <div><strong>Find A Helpline</strong> · <a href="https://findahelpline.com" target="_blank" style="color: var(--starlight); text-decoration: underline;">findahelpline.com</a></div>
+                <div><strong>International Crisis Lines</strong> · <a href="https://www.opencounseling.com/suicide-hotlines" target="_blank" style="color: var(--starlight); text-decoration: underline;">opencounseling.com/suicide-hotlines</a></div>
+                <div style="margin-top: 1rem; font-size: 0.95rem; font-style: italic;">Worldwide directory of mental health crisis resources by country</div>
+            </div>
+            <p style="margin-top: 1.5rem;">You deserve professional support. These rituals can complement therapy, but they cannot replace it.</p>
+        </div>
+        
+        <div class="section">
+            <h2>What Is Path of Aether?</h2>
+            <p>Path of Aether is a personal spiritual practice—a synthesis of therapeutic frameworks, earth-based spirituality, and practices that support emotional regulation and self-reflection.</p>
+            <p>It was created from a genuine need for accessible tools that honor both the spiritual and practical aspects of emotional healing.</p>
+            
+            <h3>What These Practices Offer</h3>
+            <ul>
+                <li>Frameworks for processing emotions like anger, grief, and overwhelm</li>
+                <li>Rituals that create space for reflection and regulation</li>
+                <li>Body-centered awareness techniques</li>
+                <li>Language that honors both spirituality and practical healing</li>
+                <li>Tools that complement professional therapeutic work</li>
+            </ul>
+            
+            <h3>What They Don't Offer</h3>
+            <ul>
+                <li>Diagnosis, treatment, or cure for mental health conditions</li>
+                <li>Replacement for professional therapy or medical care</li>
+                <li>One-size-fits-all solutions</li>
+                <li>Guaranteed outcomes or results</li>
+                <li>Professional medical or psychological advice</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Important Notes</h2>
+            
+            <div class="important-box">
+                <p><strong>These are invitations, not prescriptions.</strong> Adapt everything to what feels right for your body and situation. If something doesn't resonate, skip it. Your safety and well-being come first—always.</p>
+            </div>
+            
+            <p>The creator of Path of Aether is not a licensed therapist, counselor, or medical professional. These practices represent personal spiritual exploration and should be understood as such.</p>
+            
+            <p>If you're working with a therapist, these practices can complement that work. If you're not in therapy but struggling, please consider seeking professional support.</p>
+            
+            <h3>Your Responsibility</h3>
+            <p>By engaging with these practices, you acknowledge that:</p>
+            <ul>
+                <li>You are responsible for your own physical and emotional well-being</li>
+                <li>You will seek professional help if experiencing crisis, severe distress, or symptoms that interfere with daily functioning</li>
+                <li>You understand these practices are not therapy or medical treatment</li>
+                <li>You will adapt or discontinue any practice that doesn't feel safe or right for you</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>When to Seek Professional Help</h2>
+            <p>These practices support emotional well-being but are not therapy. Consider seeking professional help if you're experiencing:</p>
+            <ul>
+                <li>Persistent sadness, anxiety, or emotional pain that won't ease</li>
+                <li>Difficulty functioning in daily life (work, relationships, self-care)</li>
+                <li>Trauma that feels too big to process alone</li>
+                <li>Thoughts of self-harm or harming others</li>
+                <li>Substance use as a coping mechanism</li>
+                <li>Symptoms of mental health conditions (depression, anxiety, PTSD, etc.)</li>
+                <li>Patterns that repeat despite your best efforts at self-work</li>
+            </ul>
+            
+            <div class="important-box">
+                <p><strong>Finding a therapist isn't failure—it's wisdom.</strong> Professional support and spiritual practice can work beautifully together.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Disclaimer</h2>
+            <p>The practices shared on this site are personal spiritual tools, not professional medical or psychological advice. They are not intended to diagnose, treat, cure, or prevent any condition.</p>
+            
+            <p>All content is offered for educational and reflective purposes only. No guarantees or promises are made regarding outcomes or results.</p>
+            
+            <p>Path of Aether and its creator assume no liability for how these practices are used or any consequences that may result from their use.</p>
+            
+            <p>If you're experiencing mental health challenges, thoughts of self-harm, or emotional distress that interferes with daily life, please seek support from a licensed mental health professional.</p>
+            
+            <p><strong>By using this site, you acknowledge that you are responsible for your own well-being and will seek appropriate professional help when needed.</strong></p>
+        </div>
+        
+        <div class="section">
+            <h2>Ethics & Intention</h2>
+            <p>Path of Aether is offered freely, with humility, and with deep respect for the complexity of human healing.</p>
+            
+            <p>The intention is to provide accessible tools for those who resonate with this approach, not to replace professional care or claim special authority.</p>
+            
+            <p>All content represents original work and personal spiritual synthesis. The Path of Aether framework, rituals, and language are shared freely for personal use.</p>
+            
+            <p style="margin-top: 2rem; font-style: italic; color: var(--aether-glow);">Last Updated: January 2026</p>
+        </div>
+        
+        <div class="back-link">
+            <a href="index.html">← Back to Home</a>
+        </div>
+        
+        <footer>
+            Regulation · Reflection · Ritual
+        </footer>
+    </div>
+</body>
+</html>

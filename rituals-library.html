@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacred Rituals · Path of Aether</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@300;400&display=swap');
+        
+        :root {
+            --void: #0a0a12;
+            --deep-space: #1a1a2e;
+            --cosmic-purple: #4a3f6e;
+            --aether-glow: #8b7fb8;
+            --moonlight: #c9c3d8;
+            --starlight: #e8e4f0;
+            --gold-accent: #d4af37;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: var(--void);
+            color: var(--starlight);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(2px 2px at 20% 30%, white, transparent),
+                radial-gradient(2px 2px at 60% 70%, white, transparent),
+                radial-gradient(1px 1px at 50% 50%, white, transparent),
+                radial-gradient(1px 1px at 80% 10%, white, transparent),
+                radial-gradient(2px 2px at 90% 60%, white, transparent),
+                radial-gradient(1px 1px at 33% 80%, white, transparent);
+            background-size: 200% 200%;
+            background-position: 0 0, 40px 60px, 130px 270px, 70px 100px, 150px 200px, 90px 180px;
+            opacity: 0.3;
+            animation: twinkle 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.5; }
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeIn 1.2s ease-out;
+        }
+        
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--moonlight), var(--aether-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--aether-glow);
+            letter-spacing: 0.2em;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+        
+        .intro {
+            max-width: 700px;
+            margin: 0 auto 4rem auto;
+            text-align: center;
+            color: var(--moonlight);
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+        
+        .ritual-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .ritual-card {
+            background: linear-gradient(135deg, var(--deep-space) 0%, var(--cosmic-purple) 100%);
+            border: 2px solid var(--aether-glow);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .ritual-card.coming-soon {
+            opacity: 0.6;
+            cursor: default;
+        }
+        
+        .ritual-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 127, 184, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .ritual-card:not(.coming-soon):hover::before {
+            left: 100%;
+        }
+        
+        .ritual-card:not(.coming-soon):hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(139, 127, 184, 0.5);
+            border-color: var(--gold-accent);
+        }
+        
+        .ritual-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .ritual-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+            text-align: center;
+        }
+        
+        .ritual-description {
+            color: var(--moonlight);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .ritual-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold-accent);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.1em;
+        }
+        
+        .coming-soon-badge {
+            background: rgba(139, 127, 184, 0.2);
+            color: var(--aether-glow);
+        }
+        
+        .guidance-text {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid var(--aether-glow);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .guidance-text h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .guidance-text p {
+            color: var(--moonlight);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .back-link {
+            text-align: center;
+            margin: 3rem 0 2rem 0;
+        }
+        
+        .back-link a {
+            color: var(--gold-accent);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link a:hover {
+            color: var(--moonlight);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding: 2rem;
+            color: var(--aether-glow);
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SACRED RITUALS</h1>
+            <p class="subtitle">Practices for Regulation, Reflection & Ritual</p>
+        </header>
+        
+        <div class="intro">
+            <p>Each ritual offers a sacred container for what you're feeling. Choose the one that calls to you today—your body knows what it needs.</p>
+        </div>
+        
+        <div class="guidance-text">
+            <h2>How to Use These Rituals</h2>
+            <p>These are not prescriptions—they are invitations. You don't need to follow them perfectly. Adapt them to what your body, your space, and your spirit need in this moment.</p>
+        </div>
+        
+        <div class="ritual-grid">
+            <a href="sacred-anger-alchemy.html" class="ritual-card">
+                <div class="ritual-icon">🔥</div>
+                <h3 class="ritual-title">Anger Alchemy</h3>
+                <p class="ritual-description">Transform fire into wisdom. Honor anger as sacred information, release it safely, and transmute intensity into clarity and strength.</p>
+                <span class="ritual-badge">Available Now</span>
+            </a>
+            
+            <div class="ritual-card coming-soon">
+                <div class="ritual-icon">💜</div>
+                <h3 class="ritual-title">Grief Transmutation</h3>
+                <p class="ritual-description">Hold what hurts. Let grief move through you like water. Find the tenderness that emerges when we honor loss.</p>
+                <span class="ritual-badge coming-soon-badge">Coming Soon</span>
+            </div>
+            
+            <div class="ritual-card coming-soon">
+                <div class="ritual-icon">🛡️</div>
+                <h3 class="ritual-title">Boundary Setting</h3>
+                <p class="ritual-description">Speak your sacred no. Discern what's yours to hold and what to release. Claim your energy as your own.</p>
+                <span class="ritual-badge coming-soon-badge">Coming Soon</span>
+            </div>
+            
+            <div class="ritual-card coming-soon">
+                <div class="ritual-icon">🌊</div>
+                <h3 class="ritual-title">Emotional Overwhelm</h3>
+                <p class="ritual-description">When drowning in feeling, come back to shore. Ground when the waves are too big. Find your feet again.</p>
+                <span class="ritual-badge coming-soon-badge">Coming Soon</span>
+            </div>
+            
+            <div class="ritual-card coming-soon">
+                <div class="ritual-icon">🌙</div>
+                <h3 class="ritual-title">Moon Rituals</h3>
+                <p class="ritual-description">Align with lunar cycles. Set intentions with the new moon. Release with the full moon. Honor the rhythm of waxing and waning.</p>
+                <span class="ritual-badge coming-soon-badge">Coming Soon</span>
+            </div>
+            
+            <div class="ritual-card coming-soon">
+                <div class="ritual-icon">☀️</div>
+                <h3 class="ritual-title">Morning Centering</h3>
+                <p class="ritual-description">Begin your day grounded. Set intention. Connect to breath and body. Create sacred space before the world rushes in.</p>
+                <span class="ritual-badge coming-soon-badge">Coming Soon</span>
+            </div>
+        </div>
+        
+        <div class="back-link">
+            <a href="index.html">← Back to Home</a>
+        </div>
+        
+        <footer>
+            <div style="margin-bottom: 2rem; padding: 1.5rem; background: rgba(212, 55, 55, 0.1); border: 1px solid rgba(212, 55, 55, 0.3); border-radius: 8px; text-align: center;">
+                <strong style="color: #d43737;">If you're in crisis:</strong><br>
+                <span style="font-size: 0.95rem;">
+                USA: 988 (call/text) • Text HELLO to 741741<br>
+                International: <a href="https://findahelpline.com" target="_blank" style="color: var(--gold-accent); text-decoration: underline;">findahelpline.com</a>
+                </span>
+            </div>
+            Regulation · Reflection · Ritual
+        </footer>
+    </div>
+</body>
+</html>

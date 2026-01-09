@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacred Anger Alchemy · Path of Aether</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@300;400&display=swap');
+        
+        :root {
+            --void: #0a0a12;
+            --deep-space: #1a1a2e;
+            --cosmic-purple: #4a3f6e;
+            --aether-glow: #8b7fb8;
+            --moonlight: #c9c3d8;
+            --starlight: #e8e4f0;
+            --gold-accent: #d4af37;
+            --fire-red: #d43737;
+            --fire-orange: #d47337;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: var(--void);
+            color: var(--starlight);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(2px 2px at 20% 30%, white, transparent),
+                radial-gradient(2px 2px at 60% 70%, white, transparent),
+                radial-gradient(1px 1px at 50% 50%, white, transparent),
+                radial-gradient(1px 1px at 80% 10%, white, transparent),
+                radial-gradient(2px 2px at 90% 60%, white, transparent),
+                radial-gradient(1px 1px at 33% 80%, white, transparent);
+            background-size: 200% 200%;
+            background-position: 0 0, 40px 60px, 130px 270px, 70px 100px, 150px 200px, 90px 180px;
+            opacity: 0.3;
+            animation: twinkle 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.5; }
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeIn 1.2s ease-out;
+        }
+        
+        .fire-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: flicker 2s ease-in-out infinite;
+        }
+        
+        @keyframes flicker {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--fire-orange), var(--gold-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--aether-glow);
+            letter-spacing: 0.2em;
+            font-weight: 300;
+            font-style: italic;
+        }
+        
+        .intro {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid var(--fire-orange);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            line-height: 1.8;
+            backdrop-filter: blur(10px);
+        }
+        
+        .intro h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .intro p {
+            color: var(--moonlight);
+            font-size: 1.15rem;
+            margin-bottom: 1rem;
+        }
+        
+        .supplies {
+            background: rgba(74, 63, 110, 0.3);
+            border-left: 3px solid var(--gold-accent);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 8px;
+        }
+        
+        .supplies h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+        
+        .supply-grid {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .supply-item {
+            color: var(--starlight);
+            font-size: 1.1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .supply-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--fire-orange);
+            font-size: 1.5rem;
+        }
+        
+        .ritual-steps {
+            margin: 3rem 0;
+        }
+        
+        .step {
+            background: linear-gradient(135deg, var(--deep-space) 0%, var(--cosmic-purple) 100%);
+            border: 1px solid var(--aether-glow);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover {
+            border-color: var(--fire-orange);
+            box-shadow: 0 8px 30px rgba(212, 55, 55, 0.3);
+        }
+        
+        .step-number {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--fire-orange);
+            opacity: 0.2;
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+        }
+        
+        .step-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .step h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step-content {
+            color: var(--moonlight);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .mantra {
+            background: rgba(212, 55, 55, 0.2);
+            border-left: 3px solid var(--fire-orange);
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+            font-style: italic;
+            color: var(--starlight);
+        }
+        
+        .reflection {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid var(--aether-glow);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .reflection h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .reflection-prompts {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .prompt {
+            color: var(--moonlight);
+            font-size: 1.1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-style: italic;
+        }
+        
+        .prompt::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--gold-accent);
+        }
+        
+        .closing {
+            text-align: center;
+            margin: 4rem 0 2rem 0;
+            padding: 2rem;
+            border-top: 1px solid var(--aether-glow);
+        }
+        
+        .closing-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--gold-accent);
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .closing-subtext {
+            color: var(--aether-glow);
+            font-size: 1rem;
+            letter-spacing: 0.2em;
+        }
+        
+        .back-link {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .back-link a {
+            color: var(--gold-accent);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link a:hover {
+            color: var(--moonlight);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding: 2rem;
+            color: var(--aether-glow);
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="fire-icon">🔥</div>
+            <h1>SACRED ANGER ALCHEMY</h1>
+            <p class="subtitle">An Aether Practice for Transforming Fire into Wisdom</p>
+        </header>
+        
+        <div class="intro">
+            <h2>🔥 Intention</h2>
+            <p>To honor anger as a sacred signal, release it without shame, and transmute it into strength, truth, and clarity.</p>
+            <p>Anger is not the enemy. It is information. It is energy that has been trapped, compressed, ignored. This ritual gives that fire a sacred container—a way to move through you without burning everything down.</p>
+        </div>
+        
+        <div class="supplies">
+            <h3>🧰 What You'll Need</h3>
+            <div class="supply-grid">
+                <div class="supply-item"><strong>Grounding crystal:</strong> Hematite, Black Tourmaline, or Smoky Quartz</div>
+                <div class="supply-item"><strong>Cooling crystal:</strong> Howlite, Moonstone, or Amethyst</div>
+                <div class="supply-item"><strong>Essential oil(s):</strong> Vetiver, Cedarwood, Frankincense, or Chamomile</div>
+                <div class="supply-item"><strong>Candle OR alternative:</strong> Red, black, or white candle | LED candle | Bowl of water to reflect light | Simply visualize flame</div>
+                <div class="supply-item"><strong>Journal or scrap paper</strong></div>
+                <div class="supply-item"><strong>Fire-safe dish or outdoor space</strong> (for burning paper, if desired)</div>
+            </div>
+        </div>
+        
+        <div class="ritual-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-icon">🌿</div>
+                <h3>Ground the Flame</h3>
+                <div class="step-content">
+                    <p>Sit comfortably. Hold your grounding crystal in your hand.</p>
+                    <p>Apply your chosen oil to your wrists or feet. Let the scent anchor you to earth, to body, to this moment.</p>
+                    <p>Breathe deeply for 3 rounds: Inhale for 4 counts, hold for 4, exhale for 6. Visualize roots growing from your body into the earth—deep, strong, unshakeable.</p>
+                </div>
+                <div class="mantra">"I am safe to feel. I am rooted in truth."</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-icon">🕯️</div>
+                <h3>Call in the Fire</h3>
+                <div class="step-content">
+                    <p>Light your candle (or LED candle, or place a bowl of water to catch light) and face it as a symbol of your emotion. This flame—real or visualized—represents the anger: alive, powerful, dangerous if uncontained, but also capable of transformation.</p>
+                    <p>Write freely. Don't edit, don't censor. Let the words pour out:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem; line-height: 1.8;">
+                        <li>What caused the anger?</li>
+                        <li>Where do you feel it in your body?</li>
+                        <li>What does it want to say?</li>
+                    </ul>
+                </div>
+                <div class="mantra">"I honor this anger. I welcome its message."</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-icon">🌀</div>
+                <h3>Move the Energy</h3>
+                <div class="step-content">
+                    <p>Stand or sit comfortably. Place your hands over your heart, feeling the heat of anger there.</p>
+                    <p>Begin to move your hands slowly—palms out, as if pushing the energy away from your body. Breathe deeply with each movement.</p>
+                    <p>Visualize the fire leaving through your palms, your fingertips. See it flowing out—not destroyed, but transformed. Released into the earth where it becomes fuel for new growth.</p>
+                    <p>Move gently, deliberately. This isn't about force—it's about allowing the energy to transfer from your body into the space around you.</p>
+                    <p>You might sway, rock, or simply breathe with your hands in motion. Trust what your body wants to do.</p>
+                </div>
+                <div class="mantra">"I release this fire with love. I am still whole."</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-icon">🔥</div>
+                <h3>Burn or Transform</h3>
+                <div class="step-content">
+                    <p>If you wrote something, you have two options:</p>
+                    <p><strong>Burn it safely:</strong> If using a real candle, hold the paper over the flame or use a fire-safe dish. If using alternatives, use a lighter or matches in a safe outdoor space. Watch the words turn to ash. As they dissolve, know that the energy has been released.</p>
+                    <p><strong>Or tear it up:</strong> Rip the paper into pieces. Throw them away or bury them in the earth. The act of destruction is the transformation.</p>
+                    <p>As the ashes fall or paper tears, say aloud:</p>
+                </div>
+                <div class="mantra">"I transform anger into wisdom. I call back my power."</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-icon">🕊️</div>
+                <h3>Cool and Center</h3>
+                <div class="step-content">
+                    <p>Hold your cooling crystal to your chest or forehead. Feel its temperature—cool, soothing, calming.</p>
+                    <p>Apply a calming oil like Lavender or Chamomile to your temples or heart.</p>
+                    <p>Sit in stillness. Hand on heart. Breathe in peace. Exhale tension.</p>
+                    <p>Feel the fire settle. Not extinguished—transmuted. You are not diminished. You are clarified.</p>
+                </div>
+                <div class="mantra">"I choose peace. I carry the lesson, not the wound."</div>
+            </div>
+        </div>
+        
+        <div class="reflection">
+            <h3>📖 Journal Reflection (Optional)</h3>
+            <p style="color: var(--moonlight); margin-bottom: 1.5rem;">After the ritual, if you feel called, reflect on these questions:</p>
+            <div class="reflection-prompts">
+                <div class="prompt">What boundary was revealed?</div>
+                <div class="prompt">What truth wants to be spoken?</div>
+                <div class="prompt">What strength is being reclaimed?</div>
+            </div>
+        </div>
+        
+        <div class="closing">
+            <p class="closing-text">"As I intend, in light and love."</p>
+            <p class="closing-subtext">The Aether carries it so.</p>
+        </div>
+        
+        <div class="back-link">
+            <a href="rituals-library.html">← Back to Rituals</a>
+        </div>
+        
+        <footer>
+            <div style="margin-bottom: 2rem; padding: 1.5rem; background: rgba(212, 55, 55, 0.1); border: 1px solid rgba(212, 55, 55, 0.3); border-radius: 8px; text-align: center;">
+                <strong style="color: #d43737;">If you're in crisis:</strong><br>
+                <span style="font-size: 0.95rem;">
+                USA: 988 (call/text) • Text HELLO to 741741<br>
+                International: <a href="https://findahelpline.com" target="_blank" style="color: var(--gold-accent); text-decoration: underline;">findahelpline.com</a>
+                </span>
+            </div>
+            Regulation · Reflection · Ritual
+        </footer>
+    </div>
+</body>
+</html>

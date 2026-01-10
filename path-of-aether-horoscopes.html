@@ -11,9 +11,9 @@
             --void: #0a0a12;
             --deep-space: #1a1a2e;
             --cosmic-purple: #4a3f6e;
-            --aether-glow: #9b8fc9;
-            --moonlight: #d9d3e8;
-            --starlight: #f0edf5;
+            --aether-glow: #8b7fb8;
+            --moonlight: #c9c3d8;
+            --starlight: #e8e4f0;
             --gold-accent: #d4af37;
         }
         
@@ -30,7 +30,6 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
-            font-size: 18px;
         }
         
         body::before {
@@ -76,7 +75,7 @@
         
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: 3.2rem;
+            font-size: 3rem;
             font-weight: 600;
             letter-spacing: 0.15em;
             margin-bottom: 0.5rem;
@@ -84,10 +83,11 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-shadow: 0 0 30px rgba(139, 127, 184, 0.3);
         }
         
         .subtitle {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: var(--aether-glow);
             letter-spacing: 0.3em;
             text-transform: uppercase;
@@ -102,7 +102,7 @@
         
         .phase-title {
             font-family: 'Cinzel', serif;
-            font-size: 1.7rem;
+            font-size: 1.5rem;
             margin-bottom: 1.5rem;
             color: var(--gold-accent);
             letter-spacing: 0.1em;
@@ -150,20 +150,20 @@
         }
         
         .zodiac-symbol {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             margin-bottom: 0.5rem;
         }
         
         .zodiac-name {
             font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--moonlight);
             margin-bottom: 0.25rem;
         }
         
         .zodiac-dates {
             color: var(--aether-glow);
-            font-size: 1.05rem;
+            font-size: 0.9rem;
         }
         
         .horoscope-display {
@@ -172,7 +172,7 @@
             border-radius: 12px;
             padding: 2.5rem;
             margin: 3rem 0;
-            line-height: 1.9;
+            line-height: 1.8;
             animation: fadeIn 1s ease-out;
             backdrop-filter: blur(10px);
         }
@@ -181,7 +181,7 @@
             font-family: 'Cinzel', serif;
             color: var(--gold-accent);
             margin-bottom: 1rem;
-            font-size: 2.2rem;
+            font-size: 2rem;
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -191,24 +191,14 @@
             font-family: 'Cinzel', serif;
             color: var(--gold-accent);
             margin: 2rem 0 1rem 0;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
         
         .horoscope-text {
             color: var(--moonlight);
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.9;
-        }
-        
-        .horoscope-detail {
-            color: var(--starlight);
             font-size: 1.15rem;
-            margin: 1rem 0;
-        }
-        
-        .horoscope-detail strong {
-            color: var(--gold-accent);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
         }
         
         .poa-reflection {
@@ -223,30 +213,67 @@
             font-family: 'Cinzel', serif;
             color: var(--gold-accent);
             margin-bottom: 1rem;
-            font-size: 1.3rem;
         }
         
         .poa-reflection p {
             color: var(--starlight);
-            line-height: 1.9;
-            font-size: 1.15rem;
+            line-height: 1.8;
         }
         
-        .loading {
+        .moon-phase-box {
             text-align: center;
-            padding: 3rem;
-            color: var(--aether-glow);
-            font-size: 1.3rem;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(74, 63, 110, 0.3);
+            border-radius: 8px;
         }
         
-        .error {
-            background: rgba(212, 55, 55, 0.2);
-            border: 1px solid rgba(212, 55, 55, 0.5);
-            padding: 2rem;
+        .moon-phase-box .emoji {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .moon-phase-box .phase-name {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .moon-phase-box .phase-description {
+            color: var(--moonlight);
+            font-style: italic;
+        }
+        
+        .crystal-box {
+            background: rgba(26, 26, 46, 0.5);
+            border: 1px solid var(--aether-glow);
             border-radius: 12px;
-            text-align: center;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .crystal-box h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+        }
+        
+        .crystal-name {
+            font-family: 'Cinzel', serif;
+            color: var(--moonlight);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .crystal-property {
+            color: var(--aether-glow);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+        
+        .crystal-use {
             color: var(--starlight);
-            font-size: 1.15rem;
         }
         
         button {
@@ -255,7 +282,7 @@
             color: var(--starlight);
             border: 1px solid var(--gold-accent);
             padding: 1rem 2.5rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
             letter-spacing: 0.15em;
             border-radius: 8px;
             cursor: pointer;
@@ -285,7 +312,7 @@
             margin-top: 5rem;
             padding: 2rem;
             color: var(--aether-glow);
-            font-size: 1.05rem;
+            font-size: 0.9rem;
             letter-spacing: 0.1em;
         }
         
@@ -300,7 +327,6 @@
             font-family: 'Cinzel', serif;
             letter-spacing: 0.1em;
             transition: color 0.3s ease;
-            font-size: 1.1rem;
         }
         
         .back-link a:hover {
@@ -388,32 +414,299 @@
         </div>
         
         <footer>
-            <div style="margin-bottom: 2rem; padding: 1.5rem; background: rgba(212, 55, 55, 0.1); border: 1px solid rgba(212, 55, 55, 0.3); border-radius: 8px; text-align: center;">
-                <strong style="color: #d43737;">If you're in crisis:</strong><br>
-                <span style="font-size: 0.95rem;">
-                USA: 988 (call/text) • Text HELLO to 741741<br>
-                International: <a href="https://findahelpline.com" target="_blank" style="color: var(--gold-accent); text-decoration: underline;">findahelpline.com</a>
-                </span>
-            </div>
             Regulation · Reflection · Ritual
         </footer>
     </div>
     
     <script>
         const ZODIAC_INFO = {
-            aries: { symbol: '♈', name: 'Aries', element: 'Fire' },
-            taurus: { symbol: '♉', name: 'Taurus', element: 'Earth' },
-            gemini: { symbol: '♊', name: 'Gemini', element: 'Air' },
-            cancer: { symbol: '♋', name: 'Cancer', element: 'Water' },
-            leo: { symbol: '♌', name: 'Leo', element: 'Fire' },
-            virgo: { symbol: '♍', name: 'Virgo', element: 'Earth' },
-            libra: { symbol: '♎', name: 'Libra', element: 'Air' },
-            scorpio: { symbol: '♏', name: 'Scorpio', element: 'Water' },
-            sagittarius: { symbol: '♐', name: 'Sagittarius', element: 'Fire' },
-            capricorn: { symbol: '♑', name: 'Capricorn', element: 'Earth' },
-            aquarius: { symbol: '♒', name: 'Aquarius', element: 'Air' },
-            pisces: { symbol: '♓', name: 'Pisces', element: 'Water' }
+            aries: { symbol: '♈', name: 'Aries', element: 'Fire', crystal: 'carnelian' },
+            taurus: { symbol: '♉', name: 'Taurus', element: 'Earth', crystal: 'rose_quartz' },
+            gemini: { symbol: '♊', name: 'Gemini', element: 'Air', crystal: 'clear_quartz' },
+            cancer: { symbol: '♋', name: 'Cancer', element: 'Water', crystal: 'moonstone' },
+            leo: { symbol: '♌', name: 'Leo', element: 'Fire', crystal: 'citrine' },
+            virgo: { symbol: '♍', name: 'Virgo', element: 'Earth', crystal: 'green_aventurine' },
+            libra: { symbol: '♎', name: 'Libra', element: 'Air', crystal: 'blue_lace_agate' },
+            scorpio: { symbol: '♏', name: 'Scorpio', element: 'Water', crystal: 'labradorite' },
+            sagittarius: { symbol: '♐', name: 'Sagittarius', element: 'Fire', crystal: 'amethyst' },
+            capricorn: { symbol: '♑', name: 'Capricorn', element: 'Earth', crystal: 'black_tourmaline' },
+            aquarius: { symbol: '♒', name: 'Aquarius', element: 'Air', crystal: 'fluorite' },
+            pisces: { symbol: '♓', name: 'Pisces', element: 'Water', crystal: 'aquamarine' }
         };
+        
+        const CRYSTALS = {
+            carnelian: {
+                name: "Carnelian",
+                property: "Courage · Motivation",
+                use: "Hold before taking bold action. Ignites creative fire and warrior spirit."
+            },
+            rose_quartz: {
+                name: "Rose Quartz",
+                property: "Healing · Self-Love",
+                use: "Carry when you need tenderness. Gentle heart-opening and emotional healing."
+            },
+            clear_quartz: {
+                name: "Clear Quartz",
+                property: "Clarity · Amplification",
+                use: "Meditate with it when seeking answers. Amplifies intention and clears mental fog."
+            },
+            moonstone: {
+                name: "Moonstone",
+                property: "Intuition · Emotional Balance",
+                use: "Hold during moon phases. Supports emotional flow and inner knowing."
+            },
+            citrine: {
+                name: "Citrine",
+                property: "Abundance · Joy",
+                use: "Keep in workspace. Opens energy to prosperity and radiant confidence."
+            },
+            green_aventurine: {
+                name: "Green Aventurine",
+                property: "Growth · Opportunity",
+                use: "Carry when starting new projects. Attracts growth and lucky opportunities."
+            },
+            blue_lace_agate: {
+                name: "Blue Lace Agate",
+                property: "Peace · Communication",
+                use: "Hold during difficult conversations. Soothes anxiety and supports calm expression."
+            },
+            labradorite: {
+                name: "Labradorite",
+                property: "Transformation · Magic",
+                use: "Work with during transitions. Supports moving through change with grace and wonder."
+            },
+            amethyst: {
+                name: "Amethyst",
+                property: "Intuition · Spiritual Connection",
+                use: "Place under pillow or hold during meditation. Deepens inner knowing and wisdom."
+            },
+            black_tourmaline: {
+                name: "Black Tourmaline",
+                property: "Grounding · Protection",
+                use: "Hold when feeling scattered. Establishes energetic boundaries and grounds energy."
+            },
+            fluorite: {
+                name: "Fluorite",
+                property: "Focus · Mental Clarity",
+                use: "Keep at desk during work. Enhances concentration and organized thinking."
+            },
+            aquamarine: {
+                name: "Aquamarine",
+                property: "Calm · Flow",
+                use: "Hold near water or during meditation. Supports emotional flow and gentle courage."
+            }
+        };
+        
+        // 12 horoscope variations per sign (rotates monthly-ish)
+        const HOROSCOPES = {
+            aries: [
+                "Your fire energy asks for direction today. Notice where anger might be showing you a needed boundary. What bold action has been waiting for your courage? Channel that intensity into creative movement—dance, run, build something with your hands. Your body knows what needs releasing.",
+                "The warrior within seeks purpose. Today, examine where you've been fighting battles that aren't yours. What would happen if you laid down one sword? Your strength doesn't require constant combat. Rest is also an act of power.",
+                "Passion stirs, but scattered energy weakens impact. Choose one thing today—one conversation, one project, one intention. Pour your full fire into that single point. Watch how focused heat can forge what diffused flame cannot.",
+                "Your restlessness signals readiness for growth. Something new wants to emerge, but first: ground. Place your feet on earth, feel your spine lengthen. The leap you're preparing for needs solid footing.",
+                "Leadership calls, but from a different place than usual. Today, lead by listening. Let others' voices inform your next move. True authority holds space for all perspectives.",
+                "Creative fire burns bright today. Whatever you've been hesitating to start—begin it. Even messy first steps honor the spark within. Your art, your voice, your vision: they matter.",
+                "Boundaries need tending. Notice where you've overextended, where resentment simmers. Saying no is not unkind—it's honest. Your energy is sacred; protect it.",
+                "Competition energy arises. Ask: who am I really competing with? Often, it's an old version of yourself. Honor how far you've come. Growth doesn't require defeating anyone.",
+                "Courage feels absent, but it's there—just quieter than usual. Today, courage looks like admitting fear. Like asking for help. Like taking the gentle path instead of the hard one.",
+                "Your body holds wisdom today. Tension in your jaw, tightness in your shoulders—these are messages. Pause. Breathe. Ask: what am I holding that wants release?",
+                "Momentum builds. Opportunities align. But rushing dissipates power. Move with intention, not frenzy. The right timing carries its own force.",
+                "Reflection time. Your fire needs tending, not extinguishing. What fuels you sustainably? What burns too hot, too fast? Adjust the flames to last."
+            ],
+            taurus: [
+                "Stability calls you to root deeper today. Notice where fear of change has created rigidity. True grounding allows for gentle sway, like trees in wind. Where can you be both rooted and flexible?",
+                "Sensory pleasure heals today. Cook a nourishing meal. Touch soft fabric. Light a candle with intention. Your body deserves beauty and comfort—not as indulgence, but as sacred care.",
+                "Material security weighs on your mind. Examine the story you carry about scarcity. What if enough is already present? Ground in gratitude for what you have while building toward what you want.",
+                "Your pace is perfect, even when others rush you. Today, honor your natural rhythm. Slow isn't wrong. Deliberate isn't stubborn. You're building foundations that will hold.",
+                "Value yourself as you value others. Where have you underpriced your gifts, under-acknowledged your contributions? Name your worth. Speak it clearly.",
+                "The earth element asks for physical ritual today. Garden. Walk barefoot. Touch soil with intention. Your body needs to remember it belongs to this planet.",
+                "Possessiveness or attachment surfaces. Examine what you're clinging to and why. Security doesn't come from holding tight—it comes from knowing you can weather loss and still stand.",
+                "Pleasure and pain intertwine today. Something beautiful is ending or transforming. Grieve what was while making space for what will be. Both can coexist.",
+                "Your senses offer guidance. What tastes nourishing? What sounds soothing? What textures comfort? Trust your body's yes and no.",
+                "Patience frays. You've been waiting, building, tending—and the harvest feels far off. But roots grow in darkness. Trust what you cannot yet see.",
+                "Abundance flows through giving and receiving equally. Where have you closed off to one or the other? Open your hands. Let energy move through you.",
+                "Rest isn't laziness. Your body asks for stillness, for restoration. Today, the most productive thing you can do is truly rest."
+            ],
+            gemini: [
+                "Mental chatter overwhelms today. Too many thoughts, too many directions. Breathe. Choose one thread to follow. The others will keep; your mind doesn't need to hold everything at once.",
+                "Curiosity pulls in multiple directions. This is gift, not curse. But today, finish something before starting something new. Completion brings its own satisfaction.",
+                "Communication feels blocked. Words aren't coming, or they're coming out wrong. Sometimes silence holds more truth than speech. Listen today more than you speak.",
+                "Information overload clouds clarity. Step back from screens, from noise. Let your mind rest in spaciousness. Insight comes in quiet.",
+                "Connection calls—you need conversation, exchange, mental stimulation. Reach out. Your thoughts sharpen when shared with another mind.",
+                "Scattered energy fragments your power. Gather yourself. Place hand on heart. Name one thing that matters most today. Let that anchor you.",
+                "Flexibility serves you well, but today you need structure. What system, routine, or boundary would create space for your best work?",
+                "Anxiety manifests as racing thoughts. This is your body asking for grounding. Exhale fully. Feel your feet. The thoughts will slow when you land.",
+                "Learning calls to you. Something new wants your attention—a skill, a perspective, a way of understanding. Feed your curious mind.",
+                "Social energy depletes or nourishes today depending on the company. Choose wisely who receives your words.",
+                "Doubt creeps in—am I doing this right? Too many voices, including your own. Clear the mental noise. Your intuition knows.",
+                "Playfulness heals today. Lighten up. Not everything requires analysis. Sometimes joy is enough."
+            ],
+            cancer: [
+                "Emotional waves crest today. You feel everything—yours, theirs, the collective's. This is sensitivity, not weakness. But you need to pour some out. Cry. Journal. Release what isn't yours to carry.",
+                "Home and sanctuary call. Your body asks for nest, for retreat. Honor this. Tending your inner space is never selfish.",
+                "Nurturing others comes naturally, but who nurtures you? Today, turn that care inward. You cannot pour from an empty cup—and you're running low.",
+                "Past grief surfaces unexpectedly. Something current triggered an old wound. Acknowledge it. The child within needs your tenderness.",
+                "Boundaries feel impossible—where do you end and others begin? Today, practice this: their feelings are not your responsibility to fix. Witness with love, but don't absorb.",
+                "Intuition speaks clearly today if you listen. Your gut knows before your mind understands. Trust the first feeling.",
+                "Protection mode activates—shell up, guard raised. Ask gently: what am I protecting? Is the threat real, or am I responding to an old danger?",
+                "Emotional honesty is today's medicine. Say the hard thing. Name the hurt. Your voice deserves to be heard, especially when it trembles.",
+                "Water element asks for literal connection today. Bathe. Swim. Sit by water. Let the waves remind you: feelings move. Nothing stays forever.",
+                "Family patterns surface. You are not doomed to repeat what you inherited. You can be the one who breaks the cycle. Today, choose differently.",
+                "Comfort foods, soft blankets, gentle rituals—these aren't indulgences. They're how you re-mother yourself. Let yourself be held.",
+                "Overwhelm threatens to drown you. Come up for air. Ask for help. You don't have to weather every storm alone."
+            ],
+            leo: [
+                "Your light wants to shine today, but dimming yourself for others' comfort serves no one. Where have you made yourself smaller? Expand. Take up space.",
+                "Recognition matters to you—this isn't vanity, it's a need to be seen. If external validation feels absent, see yourself. Acknowledge your own magnificence.",
+                "Creative expression blocked? This is painful for you. Create anyway—badly, messily, imperfectly. The act itself restores your fire.",
+                "Generosity of spirit is your gift. But today, assess: are you giving from overflow or from depletion? Sustainable generosity requires self-replenishment.",
+                "Pride gets a bad reputation, but healthy pride is knowing your worth. Today, name three things you're genuinely proud of. Feel that warmth.",
+                "Playfulness heals. When did you last do something purely for joy? Not productivity, not purpose—just delight. Your inner child needs this.",
+                "Leadership energy stirs. Someone needs your encouragement, your vision, your belief in them. Offer it freely.",
+                "Vulnerability feels like weakness to you, but it's where true connection lives. Today, let someone see the tender heart beneath the lion's mane.",
+                "Drama swirls—internal or external. Before reacting, pause. Ask: does this require my fire, or is this feeding on drama itself?",
+                "Your heart feels too big for your chest today—full of love, full of longing. This capacity to feel deeply is gift, even when it aches.",
+                "Performance exhausts when it becomes constant. Today, you don't need to be 'on.' You can simply be. Your presence alone is enough.",
+                "Confidence wavers. Remember: courage isn't the absence of fear. It's the roar that comes despite it."
+            ],
+            scorpio: [
+                "Intensity rises to the surface. You feel too much, too deeply. This isn't a flaw—it's your power. But today, you need to transmute some of that voltage. Move it through your body.",
+                "Control loosens today. Something you've been gripping tightly asks for release. Surrender isn't weakness; it's wisdom. Let the river carry what you cannot hold.",
+                "Secrets weigh on you—yours or others'. Truth wants to emerge, but timing matters. Today, examine: what am I protecting by not speaking?",
+                "Transformation beckons. Something must die for something new to be born. This is your element: death and rebirth. Trust the cycle, even when it hurts.",
+                "Trust issues surface. Someone or something triggered your radar for betrayal. Discern: is this intuition or old wound? Both are valid, but require different responses.",
+                "Depth of connection matters more than breadth. Today, go beneath surface conversations. Your soul craves authentic exchange, not small talk.",
+                "Power dynamics shift. You're learning to stand in your authority without dominating. This is delicate work—and you're doing it.",
+                "Emotional intensity overwhelms. Before you project it outward, feel it fully first. Your feelings are information, not commands.",
+                "Shadow work calls. What you judge in others is often what you've rejected in yourself. Today, reclaim one disowned piece.",
+                "Obsession or fixation grips your mind. This is your way of processing, but it can spiral. Set a timer. Give it space, then consciously shift focus.",
+                "Vulnerability terrifies you—it feels like giving others ammunition. But intimacy requires it. Today, risk being seen.",
+                "You're tired of intensity, of heaviness. Today, let yourself be light. Not everything requires depth work. Sometimes, just breathe."
+            ],
+            sagittarius: [
+                "Adventure calls, but today's journey is internal. What belief system needs questioning? What truth have you outgrown? Expand your philosophy by examining it.",
+                "Restlessness drives you forward, but today: pause. Not every moment requires movement. Sometimes wisdom comes from staying put.",
+                "Optimism is your default, but toxic positivity bypasses real feeling. Today, honor what hurts. Growth isn't always comfortable.",
+                "Freedom matters deeply to you. But examine: what are you running from when you run toward new horizons? Sometimes staying is the bigger adventure.",
+                "Truth-telling is your gift, but bluntness can wound. Today, practice speaking truth with compassion. Honesty doesn't require harshness.",
+                "Learning excites you—new perspectives, new philosophies, new ways of seeing. Feed this hunger today. Your mind needs expansion.",
+                "Commitment phobia surfaces. Something or someone asks for roots, and you feel trapped. Freedom and commitment aren't opposites. You can be both free and devoted.",
+                "Humor heals today. Laughter is medicine. Don't take everything so seriously—including yourself.",
+                "Meaning-making is how you process life. Today, write your story. What narrative are you living? Is it the one you want?",
+                "Righteousness creeps in. You're so sure you're right. But certainty closes doors. Today, practice: 'I could be wrong.' See what opens.",
+                "Enthusiasm bubbles over. Channel it wisely—your energy inspires others, but scattered fire burns nothing well. Focus your flame.",
+                "Wanderlust aches. If you can't physically travel, travel mentally. Read. Dream. Plan. Feed the part of you that needs horizons."
+            ],
+            capricorn: [
+                "Responsibility weighs heavy today. You've been carrying so much for so long. What can you set down? Not abandon—just rest from holding.",
+                "Structure serves you, but rigidity stifles. Where have your systems become prisons? Examine what still serves versus what you're maintaining out of habit.",
+                "Achievement matters to you—this isn't shallow. But today, measure success differently. Did you rest? Did you feel? Did you connect? These also count.",
+                "Authority figures trigger something today. Notice if you're rebelling against or over-complying with external power. Your own authority is what matters.",
+                "Perfectionism paralyzes. You're waiting until you're 'ready' but readiness is a myth. Begin messy. Begin now.",
+                "Time feels like an enemy—never enough of it. But today, slow down. Presence creates time's expansion. Rush creates its scarcity.",
+                "Foundation-building is your skill. Today, assess: what am I building toward? Is this structure supporting my true goals or someone else's definition of success?",
+                "Vulnerability feels risky. You're the strong one, the capable one. But allowing others to see your struggle is how connection deepens.",
+                "Discipline and spontaneity aren't opposites. Today, add one unplanned joy to your structured day. Balance the order with a little chaos.",
+                "Your body needs attention. You push through pain, through exhaustion. Today, stop. Rest is not laziness—it's maintenance.",
+                "Legacy weighs on your mind. What mark do you want to leave? But remember: your presence, your love—these matter as much as your achievements.",
+                "Patience frays. You're climbing, but the summit feels far. Today, turn around. Look how far you've come. Celebrate that."
+            ],
+            aquarius: [
+                "Detachment serves you, but today it creates distance from your own heart. What are you feeling beneath the intellectualization? Name it. Feel it.",
+                "Vision for the future excites you, but today: be here now. The present moment holds its own magic.",
+                "Belonging struggles surface. You're the outsider, the unique one. This is gift and grief. Today, find your people—even if it's just one person who truly sees you.",
+                "Innovation and tradition clash. You resist the old ways, but some wisdom is timeless. Stay open to what has always been true.",
+                "Humanitarian impulses drive you to fix the world's problems. But today, start with yourself. Self-care isn't selfish—it's how you sustain the work.",
+                "Emotional expression feels foreign. You live in your mind, but your heart needs voice too. Today, speak a feeling without analyzing it.",
+                "Rebellion for rebellion's sake exhausts you. Examine: what am I actually resisting? Sometimes conformity is the radical choice.",
+                "Community calls. You need connection, but on your terms. Find the people who let you be weird and love you for it.",
+                "Original thought is your currency. Today, share your unique perspective. The world needs your particular way of seeing.",
+                "Technology and screens pull at you—endless information, endless distraction. Today, unplug. Your genius needs space to emerge.",
+                "Paradox doesn't bother you—you hold contradictions easily. But today, others need clarity. Translate your complex thinking into simple truth.",
+                "Idealism crashes against reality. You want things to be better, different, more evolved. But meet people where they are. Change happens slowly, then all at once."
+            ],
+            pisces: [
+                "Boundaries dissolve today. You're absorbing everyone's emotions. Come back to yourself. Place hand on heart. Feel where you end and the world begins.",
+                "Dreams and intuition speak loudly. Pay attention to symbols, to the feeling beneath the story. Your subconscious is trying to tell you something.",
+                "Escapism tempts. Reality feels harsh, and you want to drift. Gentle compassion here: what are you avoiding? Can you face it with support?",
+                "Imagination is your superpower. Today, create something from the ether—art, music, poetry, movement. Channel the muse that moves through you.",
+                "Empathy overwhelms. You feel everyone's pain as your own. This is gift, but it requires protection. Shield yourself energetically before engaging with heavy emotions.",
+                "Martyrdom patterns emerge. You're sacrificing yourself again—your needs, your dreams. Stop. Your suffering doesn't heal anyone else.",
+                "Music heals today. Whatever you're feeling, there's a song for it. Let sound move through you.",
+                "Confusion clouds clarity. You're swimming in too much water, too many possibilities. Come to shore. Dry off. Get grounded before diving back in.",
+                "Spiritual connection deepens today. Meditate. Pray. Commune with whatever divine presence speaks to you. You need this nourishment.",
+                "Illusion versus reality—sometimes you can't tell the difference. Today, ask: what is actually true versus what do I want to be true?",
+                "Grief rises like a tide. Something lost, someone missed. Let yourself feel it fully. Your tears are sacred.",
+                "Forgiveness work calls. Someone hurt you, or you hurt someone. Holding resentment poisons you more than them. Release it—not for them, for you."
+            ],
+            virgo: [
+                "Perfectionism paralyzes today. You see all the flaws, all the ways it's not enough. But done is better than perfect. Progress over perfection.",
+                "Service to others fills you, but today: who serves you? Ask for help. Let someone tend to you for once.",
+                "Anxiety manifests as overthinking. Your mind won't stop analyzing, planning, worrying. Ground in your body. Five senses check-in: what do you see, hear, feel, taste, smell?",
+                "Critical voice loudest today—usually toward yourself. Notice it. Challenge it. Would you speak to someone you love this way?",
+                "Details matter to you. This is gift—you see what others miss. But today, zoom out. See the forest, not just the trees.",
+                "Health and wellness call your attention. Your body sends signals; are you listening? Adjust one habit today that honors your physical self.",
+                "Order and routine provide safety, but rigidity creates brittleness. Where can you introduce a little flexibility?",
+                "Practical magic is your domain. Today, create ritual from the mundane. Make your morning routine sacred. Fold laundry with intention.",
+                "Humility is beautiful, but self-deprecation is not. Today, speak your competence aloud. You are skilled, capable, valuable.",
+                "Analysis paralysis strikes. You've gathered all the data, considered every angle. Now trust your gut and decide.",
+                "Healing work requires self-compassion. You cannot fix, organize, or perfect your way to wholeness. Sometimes you just need to be held.",
+                "Contribution matters to you. Today, recognize your impact—the small ways you make life better for others. This is enough."
+            ],
+            libra: [
+                "Balance feels impossible today. Everything pulls in different directions. But balance isn't standing still—it's constant adjustment. Keep moving.",
+                "People-pleasing exhausts you. You've said yes too many times when you meant no. Today, honor your truth even if it disappoints someone.",
+                "Harmony matters deeply, but not at the cost of authenticity. Conflict isn't failure—sometimes it's how real connection begins.",
+                "Beauty feeds your soul. Today, create it or surround yourself with it. Aesthetics aren't superficial; they're how you access the divine.",
+                "Decision paralysis strikes. You see too many sides, too many options. Choose imperfectly. You can adjust course later.",
+                "Relationship mirrors your inner state. What you're experiencing with another reflects something within. Today, examine your part.",
+                "Justice calls your attention. Something feels unfair. Speak up. Your voice for equity matters.",
+                "Alone time restores you, but you forget this—you default to togetherness. Today, find solitude. Your inner world needs tending.",
+                "Charm and diplomacy are your tools, but today: try directness. Clear communication, even if less polished, serves better than pretty words that obscure truth.",
+                "Partnership energy strong today. You're better with someone than alone. Reach out. Collaborate. Share the load.",
+                "Indecision stems from fear of making the wrong choice. But there is no perfect choice—only the choice you make and how you navigate from there.",
+                "Grace under pressure is your gift. Today, extend that grace to yourself. You don't have to have it all together all the time."
+            ]
+        };
+        
+        function getMoonPhase() {
+            const today = new Date();
+            const year = today.getFullYear();
+            let month = today.getMonth() + 1;
+            const day = today.getDate();
+            
+            let c = 0, e = 0, jd = 0, b = 0;
+            let adjustedYear = year;
+            
+            if (month < 3) {
+                adjustedYear--;
+                month += 12;
+            }
+            
+            ++month;
+            c = 365.25 * adjustedYear;
+            e = 30.6 * month;
+            jd = c + e + day - 694039.09;
+            jd /= 29.5305882;
+            b = parseInt(jd);
+            jd -= b;
+            b = Math.round(jd * 8);
+            
+            if (b >= 8) b = 0;
+            
+            const phases = [
+                { name: "New Moon", description: "New beginnings, setting intentions, planting seeds.", emoji: "🌑" },
+                { name: "Waxing Crescent", description: "Growth, momentum building, taking action.", emoji: "🌒" },
+                { name: "First Quarter", description: "Challenges arise, decisions needed, push through.", emoji: "🌓" },
+                { name: "Waxing Gibbous", description: "Refinement, adjustment, preparation.", emoji: "🌔" },
+                { name: "Full Moon", description: "Culmination, celebration, illumination.", emoji: "🌕" },
+                { name: "Waning Gibbous", description: "Gratitude, sharing wisdom, giving back.", emoji: "🌖" },
+                { name: "Last Quarter", description: "Release, forgiveness, letting go.", emoji: "🌗" },
+                { name: "Waning Crescent", description: "Rest, reflection, surrender.", emoji: "🌘" }
+            ];
+            
+            return phases[b];
+        }
         
         function getPoAReflection(element) {
             const reflections = {
@@ -425,77 +718,76 @@
             return reflections[element];
         }
         
-        async function selectSign(sign) {
+        function getDayOfYear() {
+            const now = new Date();
+            const start = new Date(now.getFullYear(), 0, 0);
+            const diff = now - start;
+            const oneDay = 1000 * 60 * 60 * 24;
+            return Math.floor(diff / oneDay);
+        }
+        
+        function selectSign(sign) {
             const displayArea = document.getElementById('horoscopeDisplay');
             const selectionArea = document.getElementById('zodiacSelection');
             
             selectionArea.classList.add('hidden');
             displayArea.classList.remove('hidden');
             
-            // Show loading
-            displayArea.innerHTML = '<div class="loading">Consulting the stars... ✨</div>';
+            const zodiac = ZODIAC_INFO[sign];
+            const moonPhase = getMoonPhase();
+            const crystal = CRYSTALS[zodiac.crystal];
             
-            try {
-                // Call our Netlify function instead of external API
-                const response = await fetch(`/.netlify/functions/horoscope?sign=${sign}`);
-                
-                if (!response.ok) {
-                    throw new Error('Failed to fetch horoscope');
-                }
-                
-                const data = await response.json();
-                const zodiac = ZODIAC_INFO[sign];
-                
-                // Build the display
-                let html = '<div class="horoscope-display">';
-                html += `<h2>${zodiac.symbol} ${zodiac.name}</h2>`;
-                
-                // Today's date
-                const today = new Date();
-                const dateStr = today.toLocaleDateString('en-US', { 
-                    weekday: 'long', 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                });
-                
-                html += `<p style="color: var(--aether-glow); text-align: center; margin: 1rem 0; font-style: italic; font-size: 1.15rem;">${dateStr}</p>`;
-                
-                // Horoscope text
-                html += `<h3>Today's Guidance</h3>`;
-                html += `<div class="horoscope-text">${data.description}</div>`;
-                
-                // Additional details
-                html += `<div class="horoscope-detail"><strong>Lucky Number:</strong> ${data.lucky_number}</div>`;
-                html += `<div class="horoscope-detail"><strong>Lucky Time:</strong> ${data.lucky_time}</div>`;
-                html += `<div class="horoscope-detail"><strong>Color:</strong> ${data.color}</div>`;
-                html += `<div class="horoscope-detail"><strong>Mood:</strong> ${data.mood}</div>`;
-                html += `<div class="horoscope-detail"><strong>Compatibility:</strong> ${data.compatibility}</div>`;
-                
-                // Path of Aether reflection
-                html += `<div class="poa-reflection">`;
-                html += `<h4>Path of Aether Reflection</h4>`;
-                html += `<p>${getPoAReflection(zodiac.element)}</p>`;
-                html += `<p style="margin-top: 1rem; font-style: italic; color: var(--moonlight);">Ritual suggestion: Take three breaths. Notice where this guidance lands in your body. What wants your attention today?</p>`;
-                html += `</div>`;
-                
-                html += `<button onclick="resetHoroscope()">Choose Another Sign</button>`;
-                html += '</div>';
-                
-                displayArea.innerHTML = html;
-                
-            } catch (error) {
-                console.error('Error:', error);
-                displayArea.innerHTML = `
-                    <div class="error">
-                        <h3 style="color: var(--gold-accent); margin-bottom: 1rem; font-size: 1.5rem;">The stars are momentarily obscured</h3>
-                        <p style="margin-bottom: 1rem;">Unable to fetch today's horoscope. Please try again in a moment.</p>
-                        <p style="font-size: 0.95rem; font-style: italic;">Technical note: ${error.message}</p>
-                        <button onclick="selectSign('${sign}')">Try Again</button>
-                        <button onclick="resetHoroscope()">Choose Another Sign</button>
-                    </div>
-                `;
-            }
+            // Get today's horoscope (rotates based on day of year)
+            const dayIndex = getDayOfYear();
+            const horoscopeIndex = dayIndex % 12;
+            const horoscopeText = HOROSCOPES[sign][horoscopeIndex];
+            
+            // Get today's date
+            const today = new Date();
+            const dateStr = today.toLocaleDateString('en-US', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            
+            // Build the display
+            let html = '<div class="horoscope-display">';
+            html += `<h2>${zodiac.symbol} ${zodiac.name}</h2>`;
+            
+            // Moon phase
+            html += `<div class="moon-phase-box">`;
+            html += `<div class="emoji">${moonPhase.emoji}</div>`;
+            html += `<div class="phase-name">${moonPhase.name}</div>`;
+            html += `<div class="phase-description">${moonPhase.description}</div>`;
+            html += `</div>`;
+            
+            // Today's date
+            html += `<p style="color: var(--aether-glow); text-align: center; margin: 1rem 0; font-style: italic;">${dateStr}</p>`;
+            
+            // Horoscope text
+            html += `<h3>Today's Guidance</h3>`;
+            html += `<div class="horoscope-text">${horoscopeText}</div>`;
+            
+            // Path of Aether reflection
+            html += `<div class="poa-reflection">`;
+            html += `<h4>Path of Aether Reflection</h4>`;
+            html += `<p>${getPoAReflection(zodiac.element)}</p>`;
+            html += `<p style="margin-top: 1rem; font-style: italic; color: var(--moonlight);">Ritual suggestion: Take three breaths. Notice where this guidance lands in your body. What wants your attention today?</p>`;
+            html += `</div>`;
+            
+            // Crystal recommendation
+            html += `<div class="crystal-box">`;
+            html += `<h4>💎 Crystal Companion</h4>`;
+            html += `<div class="crystal-name">${crystal.name}</div>`;
+            html += `<div class="crystal-property">${crystal.property}</div>`;
+            html += `<div class="crystal-use">${crystal.use}</div>`;
+            html += `</div>`;
+            
+            html += `<button onclick="resetHoroscope()">Choose Another Sign</button>`;
+            html += '</div>';
+            
+            displayArea.innerHTML = html;
         }
         
         function resetHoroscope() {

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grief Transmutation · Path of Aether</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@300;400&display=swap');
+        
+        :root {
+            --void: #0a0a12;
+            --deep-space: #1a1a2e;
+            --cosmic-purple: #4a3f6e;
+            --aether-glow: #8b7fb8;
+            --moonlight: #c9c3d8;
+            --starlight: #e8e4f0;
+            --gold-accent: #d4af37;
+            --water-blue: #4a7b9d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: var(--void);
+            color: var(--starlight);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(2px 2px at 20% 30%, white, transparent),
+                radial-gradient(2px 2px at 60% 70%, white, transparent),
+                radial-gradient(1px 1px at 50% 50%, white, transparent),
+                radial-gradient(1px 1px at 80% 10%, white, transparent),
+                radial-gradient(2px 2px at 90% 60%, white, transparent),
+                radial-gradient(1px 1px at 33% 80%, white, transparent);
+            background-size: 200% 200%;
+            background-position: 0 0, 40px 60px, 130px 270px, 70px 100px, 150px 200px, 90px 180px;
+            opacity: 0.3;
+            animation: twinkle 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.5; }
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeIn 1.2s ease-out;
+        }
+        
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--water-blue), var(--gold-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--aether-glow);
+            letter-spacing: 0.2em;
+            font-weight: 300;
+            font-style: italic;
+        }
+        
+        .intro {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid var(--water-blue);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            line-height: 1.8;
+            backdrop-filter: blur(10px);
+        }
+        
+        .intro h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .intro p {
+            color: var(--moonlight);
+            font-size: 1.15rem;
+            margin-bottom: 1rem;
+        }
+        
+        .supplies {
+            background: rgba(74, 63, 110, 0.3);
+            border-left: 3px solid var(--gold-accent);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 8px;
+        }
+        
+        .supplies h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+        
+        .supply-grid {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .supply-item {
+            color: var(--starlight);
+            font-size: 1.1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .supply-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--water-blue);
+            font-size: 1.5rem;
+        }
+        
+        .ritual-steps {
+            margin: 3rem 0;
+        }
+        
+        .step {
+            background: linear-gradient(135deg, var(--deep-space) 0%, var(--cosmic-purple) 100%);
+            border: 1px solid var(--aether-glow);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover {
+            border-color: var(--water-blue);
+            box-shadow: 0 8px 30px rgba(74, 123, 157, 0.3);
+        }
+        
+        .step-number {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--water-blue);
+            opacity: 0.2;
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+        }
+        
+        .step-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .step h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step-content {
+            color: var(--moonlight);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .mantra {
+            background: rgba(74, 123, 157, 0.2);
+            border-left: 3px solid var(--water-blue);
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+            font-style: italic;
+            color: var(--starlight);
+        }
+        
+        .reflection {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid var(--aether-glow);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .reflection h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .reflection-prompts {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .prompt {
+            color: var(--moonlight);
+            font-size: 1.1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-style: italic;
+        }
+        
+        .prompt::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--gold-accent);
+        }
+        
+        .closing {
+            text-align: center;
+            margin: 4rem 0 2rem 0;
+            padding: 2rem;
+            border-top: 1px solid var(--aether-glow);
+        }
+        
+        .closing-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--gold-accent);
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .closing-subtext {
+            color: var(--aether-glow);
+            font-size: 1rem;
+            letter-spacing: 0.2em;
+        }
+        
+        .back-link {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .back-link a {
+            color: var(--gold-accent);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link a:hover {
+            color: var(--moonlight);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding: 2rem;
+            color: var(--aether-glow);
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="icon">💜</div>
+            <h1>GRIEF TRANSMUTATION</h1>
+            <p class="subtitle">Hold what hurts. Find the tenderness.</p>
+        </header>
+        
+        <div class="intro">
+            <h2>💜 Intention</h2>
+            <p>To honor grief as love continuing in a new form. To hold what hurts without being consumed by it. To allow sorrow to move through you like water, leaving space for tenderness to emerge.</p>
+            <p>Grief is not the enemy. It is love that has nowhere to go. This ritual creates a sacred container for that love—a way to feel the fullness of loss while remembering that you are held.</p>
+        </div>
+        
+        <div class="supplies">
+            <h3>🧰 What You'll Need</h3>
+            <div class="supply-grid">
+                <div class="supply-item"><strong>Grief crystal:</strong> Rose Quartz, Amethyst, Lepidolite, Apache Tear, Moonstone, or Celestite</div>
+                <div class="supply-item"><strong>Comfort item:</strong> Photo, memento, or object that connects you to who/what was lost</div>
+                <div class="supply-item"><strong>Essential oil(s):</strong> Lavender, Rose, Chamomile, or Ylang Ylang</div>
+                <div class="supply-item"><strong>Candle OR alternative:</strong> Soft white candle | LED candle | Bowl of water to catch light | Visualization</div>
+                <div class="supply-item"><strong>Soft blanket or shawl</strong> (for holding yourself)</div>
+                <div class="supply-item"><strong>Journal</strong> (optional)</div>
+                <div class="supply-item"><strong>Tissues</strong> (honor the tears)</div>
+            </div>
+        </div>
+        
+        <div class="ritual-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-icon">🌿</div>
+                <h3>Create Sacred Space</h3>
+                <div class="step-content">
+                    <p>Find a quiet place where you can feel without interruption. Wrap yourself in the blanket or shawl—let it be a physical reminder that you are held.</p>
+                    <p>Place your grief crystal in your hand. Feel its weight, its coolness. This stone has witnessed sorrow before. It can hold yours.</p>
+                    <p>If using a candle (real or LED), light it now. If using a water bowl, place it where light catches it. If visualizing, close your eyes and see a gentle flame.</p>
+                    <p>Apply your chosen oil to your wrists or heart space. Breathe deeply—three slow breaths. You are safe. You are allowed to feel.</p>
+                </div>
+                <div class="mantra">"I create space to hold what hurts."</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-icon">🕯️</div>
+                <h3>Speak to the Loss</h3>
+                <div class="step-content">
+                    <p>Hold your comfort item—the photo, the memento. Look at it. Let yourself feel the presence of who or what was lost.</p>
+                    <p>Speak aloud if you can. Whisper if that's all you have. Say what needs to be said:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem; line-height: 1.8;">
+                        <li>"I miss you."</li>
+                        <li>"I'm angry you're gone."</li>
+                        <li>"I don't know how to do this without you."</li>
+                        <li>"Thank you for the love you gave."</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">There are no wrong words. Grief doesn't ask for eloquence. It asks for honesty.</p>
+                </div>
+                <div class="mantra">"Love does not leave. It transforms."</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-icon">💧</div>
+                <h3>Let the Water Flow</h3>
+                <div class="step-content">
+                    <p>Tears are sacred. If they come, let them. If they don't, that's also okay. Grief moves in waves—not every ritual summons them.</p>
+                    <p>Hold your crystal to your heart. Feel the ache there—the hollow place where they used to be.</p>
+                    <p>Breathe into that space. Imagine your breath as gentle waves, moving through the pain without washing it away. You're not trying to fix this. You're witnessing it.</p>
+                    <p>If words come—anger, longing, gratitude—speak them into the space. The candle holds them. The crystal absorbs them. You don't have to carry them alone.</p>
+                </div>
+                <div class="mantra">"I allow grief to move through me like water."</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-icon">🤲</div>
+                <h3>Offer Gratitude</h3>
+                <div class="step-content">
+                    <p>This is the transmutation: grief into gratitude. Not to erase the pain, but to honor what was given.</p>
+                    <p>Place both hands over your heart. Think of one thing you're grateful for—one memory, one moment, one gift they left behind.</p>
+                    <p>It might be big: "Thank you for teaching me how to be brave."</p>
+                    <p>It might be small: "Thank you for always making me laugh."</p>
+                    <p>Speak it aloud. Let that gratitude exist alongside the grief. Both can be true.</p>
+                </div>
+                <div class="mantra">"What was loved is never lost. It lives in me."</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-icon">🌙</div>
+                <h3>Close with Tenderness</h3>
+                <div class="step-content">
+                    <p>Place your crystal somewhere you can see it—by your bed, on your altar, in your pocket. Let it remind you that grief softens with time, even when it never fully leaves.</p>
+                    <p>Blow out the candle (or turn off the LED) as a symbol of completion—not of the grief, but of this ritual.</p>
+                    <p>Wrap yourself tighter in your blanket. Place both hands on your heart and say:</p>
+                    <p style="font-style: italic; margin-top: 1rem;">"I carry you with me. I honor what we had. I allow myself to heal."</p>
+                </div>
+                <div class="mantra">"Grief is love with nowhere to go. I make space for both."</div>
+            </div>
+        </div>
+        
+        <div class="reflection">
+            <h3>📖 Journal Reflection (Optional)</h3>
+            <p style="color: var(--moonlight); margin-bottom: 1.5rem;">If you feel called to write, these prompts can help:</p>
+            <div class="reflection-prompts">
+                <div class="prompt">What memory came up most strongly today?</div>
+                <div class="prompt">What am I carrying that I'm ready to set down?</div>
+                <div class="prompt">How can I honor this person/thing in my daily life?</div>
+                <div class="prompt">What tenderness is emerging beneath the grief?</div>
+            </div>
+        </div>
+        
+        <div class="closing">
+            <p class="closing-text">"As I intend, in light and love."</p>
+            <p class="closing-subtext">The Aether carries it so.</p>
+        </div>
+        
+        <div class="back-link">
+            <a href="rituals-library.html">← Back to Rituals</a>
+        </div>
+        
+        <footer>
+            <div style="margin-bottom: 2rem; padding: 1.5rem; background: rgba(212, 55, 55, 0.1); border: 1px solid rgba(212, 55, 55, 0.3); border-radius: 8px; text-align: center;">
+                <strong style="color: #d43737;">If you're in crisis:</strong><br>
+                <span style="font-size: 0.95rem;">
+                USA: 988 (call/text) • Text HELLO to 741741<br>
+                International: <a href="https://findahelpline.com" target="_blank" style="color: var(--gold-accent); text-decoration: underline;">findahelpline.com</a>
+                </span>
+            </div>
+            Regulation · Reflection · Ritual
+        </footer>
+    </div>
+</body>
+</html>

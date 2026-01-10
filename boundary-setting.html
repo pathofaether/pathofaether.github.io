@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boundary Setting · Path of Aether</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@300;400&display=swap');
+        
+        :root {
+            --void: #0a0a12;
+            --deep-space: #1a1a2e;
+            --cosmic-purple: #4a3f6e;
+            --aether-glow: #8b7fb8;
+            --moonlight: #c9c3d8;
+            --starlight: #e8e4f0;
+            --gold-accent: #d4af37;
+            --shield-blue: #5a7fa3;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: var(--void);
+            color: var(--starlight);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(2px 2px at 20% 30%, white, transparent),
+                radial-gradient(2px 2px at 60% 70%, white, transparent),
+                radial-gradient(1px 1px at 50% 50%, white, transparent),
+                radial-gradient(1px 1px at 80% 10%, white, transparent),
+                radial-gradient(2px 2px at 90% 60%, white, transparent),
+                radial-gradient(1px 1px at 33% 80%, white, transparent);
+            background-size: 200% 200%;
+            background-position: 0 0, 40px 60px, 130px 270px, 70px 100px, 150px 200px, 90px 180px;
+            opacity: 0.3;
+            animation: twinkle 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.5; }
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeIn 1.2s ease-out;
+        }
+        
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--shield-blue), var(--gold-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--aether-glow);
+            letter-spacing: 0.2em;
+            font-weight: 300;
+            font-style: italic;
+        }
+        
+        .intro {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid var(--shield-blue);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            line-height: 1.8;
+            backdrop-filter: blur(10px);
+        }
+        
+        .intro h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .intro p {
+            color: var(--moonlight);
+            font-size: 1.15rem;
+            margin-bottom: 1rem;
+        }
+        
+        .supplies {
+            background: rgba(74, 63, 110, 0.3);
+            border-left: 3px solid var(--gold-accent);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 8px;
+        }
+        
+        .supplies h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+        
+        .supply-grid {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .supply-item {
+            color: var(--starlight);
+            font-size: 1.1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .supply-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--shield-blue);
+            font-size: 1.5rem;
+        }
+        
+        .ritual-steps {
+            margin: 3rem 0;
+        }
+        
+        .step {
+            background: linear-gradient(135deg, var(--deep-space) 0%, var(--cosmic-purple) 100%);
+            border: 1px solid var(--aether-glow);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover {
+            border-color: var(--shield-blue);
+            box-shadow: 0 8px 30px rgba(90, 127, 163, 0.3);
+        }
+        
+        .step-number {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--shield-blue);
+            opacity: 0.2;
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+        }
+        
+        .step-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .step h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step-content {
+            color: var(--moonlight);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .mantra {
+            background: rgba(90, 127, 163, 0.2);
+            border-left: 3px solid var(--shield-blue);
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+            font-style: italic;
+            color: var(--starlight);
+        }
+        
+        .reflection {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid var(--aether-glow);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .reflection h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .reflection-prompts {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .prompt {
+            color: var(--moonlight);
+            font-size: 1.1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-style: italic;
+        }
+        
+        .prompt::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--gold-accent);
+        }
+        
+        .closing {
+            text-align: center;
+            margin: 4rem 0 2rem 0;
+            padding: 2rem;
+            border-top: 1px solid var(--aether-glow);
+        }
+        
+        .closing-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--gold-accent);
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .closing-subtext {
+            color: var(--aether-glow);
+            font-size: 1rem;
+            letter-spacing: 0.2em;
+        }
+        
+        .back-link {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .back-link a {
+            color: var(--gold-accent);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link a:hover {
+            color: var(--moonlight);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding: 2rem;
+            color: var(--aether-glow);
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="icon">🛡️</div>
+            <h1>BOUNDARY SETTING</h1>
+            <p class="subtitle">Claim your sacred no. Reclaim your energy.</p>
+        </header>
+        
+        <div class="intro">
+            <h2>🛡️ Intention</h2>
+            <p>To discern what is yours to hold and what to release. To speak your "no" without guilt or apology. To claim your energy as your own—not selfish, but sacred.</p>
+            <p>Boundaries are not walls. They are clarity. They are the edges where you end and the world begins. This ritual helps you find those edges and honor them.</p>
+        </div>
+        
+        <div class="supplies">
+            <h3>🧰 What You'll Need</h3>
+            <div class="supply-grid">
+                <div class="supply-item"><strong>Protection crystal:</strong> Black Tourmaline, Hematite, or Obsidian</div>
+                <div class="supply-item"><strong>Essential oil(s):</strong> Cedarwood, Frankincense, or Vetiver (grounding)</div>
+                <div class="supply-item"><strong>Candle OR alternative:</strong> White or black candle | LED candle | Bowl of water | Visualization</div>
+                <div class="supply-item"><strong>Paper and pen</strong> (for boundary writing)</div>
+                <div class="supply-item"><strong>Optional:</strong> A piece of jewelry or object you can wear/carry as a boundary reminder</div>
+            </div>
+        </div>
+        
+        <div class="ritual-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-icon">🌿</div>
+                <h3>Ground in Your Body</h3>
+                <div class="step-content">
+                    <p>Sit with your spine straight, feet flat on the floor. Feel the earth beneath you—solid, unwavering.</p>
+                    <p>Hold your protection crystal in your left hand (receiving side). Apply your grounding oil to the soles of your feet or your wrists.</p>
+                    <p>Close your eyes. Breathe into your belly—slow, deep breaths. With each exhale, feel roots growing from your feet into the earth. You are anchored. You are allowed to take up space.</p>
+                    <p>If using a candle (real or LED), light it now. Let it represent your center—the part of you that knows what you need.</p>
+                </div>
+                <div class="mantra">"I am grounded. I am safe. I am allowed to have limits."</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-icon">✍️</div>
+                <h3>Name What Drains You</h3>
+                <div class="step-content">
+                    <p>Take your paper and pen. Write at the top: "What is not mine to carry."</p>
+                    <p>Beneath it, list what you've been holding that doesn't belong to you:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem; line-height: 1.8;">
+                        <li>Other people's emotions or problems</li>
+                        <li>Obligations you said yes to out of guilt</li>
+                        <li>Relationships that deplete rather than nourish</li>
+                        <li>Expectations that aren't aligned with your truth</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">Be honest. No one will see this but you. Name what drains you without softening it.</p>
+                </div>
+                <div class="mantra">"I release what is not mine to hold."</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-icon">🛡️</div>
+                <h3>Visualize Your Shield</h3>
+                <div class="step-content">
+                    <p>Stand up. Place your crystal at your heart center with both hands covering it.</p>
+                    <p>Close your eyes and visualize a shield forming around your body—not to keep love out, but to filter what enters your space.</p>
+                    <p>See this shield as light, flexible but strong. It allows in what nourishes you and deflects what doesn't.</p>
+                    <p>Slowly move your hands outward from your heart, palms facing away, as if pushing the shield out to arm's length. Feel the boundary form. This is your sacred space.</p>
+                </div>
+                <div class="mantra">"My energy is sacred. I choose what I allow in."</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-icon">🗣️</div>
+                <h3>Practice Your No</h3>
+                <div class="step-content">
+                    <p>Say it aloud: "No."</p>
+                    <p>Again, louder: "No."</p>
+                    <p>One more time with your full voice: "No."</p>
+                    <p>Feel how it lands in your body. Notice if guilt rises—it will. Breathe through it. Your no is not cruel. It is clarity.</p>
+                    <p>Now practice a complete boundary:</p>
+                    <p style="margin-left: 2rem; margin-top: 1rem; font-style: italic;">"I can't take that on right now."<br>"That doesn't work for me."<br>"I need space to consider that."</p>
+                    <p style="margin-top: 1rem;">You don't owe anyone an explanation. Your no is enough.</p>
+                </div>
+                <div class="mantra">"No is a complete sentence. I honor my limits."</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-icon">💎</div>
+                <h3>Seal the Boundary</h3>
+                <div class="step-content">
+                    <p>Sit back down. Hold your crystal to your heart.</p>
+                    <p>If you have a piece of jewelry or small object, anoint it with your oil and hold it alongside the crystal. This will be your boundary reminder—something you can touch when you need to remember your edges.</p>
+                    <p>Speak this aloud:</p>
+                    <p style="margin-left: 2rem; margin-top: 1rem; font-style: italic;">"I reclaim my energy. What I give, I give freely. What I withhold, I withhold without guilt. My boundaries are not walls—they are the sacred edges of my being."</p>
+                    <p style="margin-top: 1rem;">Blow out the candle (or turn off LED) as a symbol of completion. Carry your crystal or reminder object with you.</p>
+                </div>
+                <div class="mantra">"I am whole within my boundaries. I am safe."</div>
+            </div>
+        </div>
+        
+        <div class="reflection">
+            <h3>📖 Journal Reflection (Optional)</h3>
+            <p style="color: var(--moonlight); margin-bottom: 1.5rem;">After the ritual, consider these prompts:</p>
+            <div class="reflection-prompts">
+                <div class="prompt">Where have I been porous when I needed to be solid?</div>
+                <div class="prompt">What relationship or situation requires a clearer boundary?</div>
+                <div class="prompt">What would change if I truly honored my limits?</div>
+                <div class="prompt">How can I practice my "no" with love?</div>
+            </div>
+        </div>
+        
+        <div class="closing">
+            <p class="closing-text">"As I intend, in light and love."</p>
+            <p class="closing-subtext">The Aether carries it so.</p>
+        </div>
+        
+        <div class="back-link">
+            <a href="rituals-library.html">← Back to Rituals</a>
+        </div>
+        
+        <footer>
+            <div style="margin-bottom: 2rem; padding: 1.5rem; background: rgba(212, 55, 55, 0.1); border: 1px solid rgba(212, 55, 55, 0.3); border-radius: 8px; text-align: center;">
+                <strong style="color: #d43737;">If you're in crisis:</strong><br>
+                <span style="font-size: 0.95rem;">
+                USA: 988 (call/text) • Text HELLO to 741741<br>
+                International: <a href="https://findahelpline.com" target="_blank" style="color: var(--gold-accent); text-decoration: underline;">findahelpline.com</a>
+                </span>
+            </div>
+            Regulation · Reflection · Ritual
+        </footer>
+    </div>
+</body>
+</html>

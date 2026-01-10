@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotional Overwhelm · Path of Aether</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@300;400&display=swap');
+        
+        :root {
+            --void: #0a0a12;
+            --deep-space: #1a1a2e;
+            --cosmic-purple: #4a3f6e;
+            --aether-glow: #8b7fb8;
+            --moonlight: #c9c3d8;
+            --starlight: #e8e4f0;
+            --gold-accent: #d4af37;
+            --calm-blue: #4a9ca8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: var(--void);
+            color: var(--starlight);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(2px 2px at 20% 30%, white, transparent),
+                radial-gradient(2px 2px at 60% 70%, white, transparent),
+                radial-gradient(1px 1px at 50% 50%, white, transparent),
+                radial-gradient(1px 1px at 80% 10%, white, transparent),
+                radial-gradient(2px 2px at 90% 60%, white, transparent),
+                radial-gradient(1px 1px at 33% 80%, white, transparent);
+            background-size: 200% 200%;
+            background-position: 0 0, 40px 60px, 130px 270px, 70px 100px, 150px 200px, 90px 180px;
+            opacity: 0.3;
+            animation: twinkle 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.5; }
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeIn 1.2s ease-out;
+        }
+        
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--calm-blue), var(--gold-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--aether-glow);
+            letter-spacing: 0.2em;
+            font-weight: 300;
+            font-style: italic;
+        }
+        
+        .intro {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid var(--calm-blue);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            line-height: 1.8;
+            backdrop-filter: blur(10px);
+        }
+        
+        .intro h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .intro p {
+            color: var(--moonlight);
+            font-size: 1.15rem;
+            margin-bottom: 1rem;
+        }
+        
+        .supplies {
+            background: rgba(74, 63, 110, 0.3);
+            border-left: 3px solid var(--gold-accent);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 8px;
+        }
+        
+        .supplies h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+        
+        .supply-grid {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .supply-item {
+            color: var(--starlight);
+            font-size: 1.1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .supply-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--calm-blue);
+            font-size: 1.5rem;
+        }
+        
+        .ritual-steps {
+            margin: 3rem 0;
+        }
+        
+        .step {
+            background: linear-gradient(135deg, var(--deep-space) 0%, var(--cosmic-purple) 100%);
+            border: 1px solid var(--aether-glow);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover {
+            border-color: var(--calm-blue);
+            box-shadow: 0 8px 30px rgba(74, 156, 168, 0.3);
+        }
+        
+        .step-number {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--calm-blue);
+            opacity: 0.2;
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+        }
+        
+        .step-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .step h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step-content {
+            color: var(--moonlight);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .mantra {
+            background: rgba(74, 156, 168, 0.2);
+            border-left: 3px solid var(--calm-blue);
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+            font-style: italic;
+            color: var(--starlight);
+        }
+        
+        .reflection {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid var(--aether-glow);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .reflection h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .reflection-prompts {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .prompt {
+            color: var(--moonlight);
+            font-size: 1.1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-style: italic;
+        }
+        
+        .prompt::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--gold-accent);
+        }
+        
+        .closing {
+            text-align: center;
+            margin: 4rem 0 2rem 0;
+            padding: 2rem;
+            border-top: 1px solid var(--aether-glow);
+        }
+        
+        .closing-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--gold-accent);
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .closing-subtext {
+            color: var(--aether-glow);
+            font-size: 1rem;
+            letter-spacing: 0.2em;
+        }
+        
+        .back-link {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .back-link a {
+            color: var(--gold-accent);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link a:hover {
+            color: var(--moonlight);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding: 2rem;
+            color: var(--aether-glow);
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="icon">🌊</div>
+            <h1>EMOTIONAL OVERWHELM</h1>
+            <p class="subtitle">Come back to shore. Find your feet again.</p>
+        </header>
+        
+        <div class="intro">
+            <h2>🌊 Intention</h2>
+            <p>To return to your body when emotions threaten to drown you. To find ground when the waves are too big. To remember that you are solid earth beneath the churning water.</p>
+            <p>Overwhelm is not weakness. It's what happens when you've absorbed too much, held too much, felt too much. This ritual brings you back to shore—one breath at a time.</p>
+        </div>
+        
+        <div class="supplies">
+            <h3>🧰 What You'll Need</h3>
+            <div class="supply-grid">
+                <div class="supply-item"><strong>Grounding crystal:</strong> Smoky Quartz, Black Tourmaline, Hematite, or Red Jasper</div>
+                <div class="supply-item"><strong>Calming crystal:</strong> Amethyst, Howlite, or Blue Lace Agate</div>
+                <div class="supply-item"><strong>Essential oil(s):</strong> Lavender, Chamomile, Vetiver, or Frankincense</div>
+                <div class="supply-item"><strong>Cold water</strong> (to drink)</div>
+                <div class="supply-item"><strong>Heavy blanket or weighted object</strong> (optional - for physical grounding)</div>
+                <div class="supply-item"><strong>Ice cube</strong> (optional - for immediate regulation)</div>
+            </div>
+        </div>
+        
+        <div class="ritual-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-icon">⚓</div>
+                <h3>Drop Anchor</h3>
+                <div class="step-content">
+                    <p>First, interrupt the spiral. You need something physical to grab onto.</p>
+                    <p><strong>If you have an ice cube:</strong> Hold it in your palm. Feel the shock of cold. Focus on that sensation—nothing else.</p>
+                    <p><strong>If not:</strong> Press your feet flat on the floor. Push down hard. Feel the resistance of the earth pushing back.</p>
+                    <p>Name five things you can see right now. Out loud if possible. One at a time. Slowly.</p>
+                    <p>This is not meditation. This is triage. You're pulling yourself out of the current.</p>
+                </div>
+                <div class="mantra">"I am here. I am in my body. I am safe right now."</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-icon">🌬️</div>
+                <h3>Regulate Breath</h3>
+                <div class="step-content">
+                    <p>Your breath is shallow. Your chest is tight. We fix this first.</p>
+                    <p>Hold your grounding crystal in your left hand. Place your right hand on your belly.</p>
+                    <p>Breathe in through your nose for 4 counts—feel your belly rise under your hand.</p>
+                    <p>Hold for 4 counts.</p>
+                    <p>Exhale through your mouth for 6 counts—make it audible, sighing out.</p>
+                    <p>Repeat 5 times. Count aloud if it helps you focus.</p>
+                    <p>Your nervous system is listening. You're telling it: "We're okay. We can slow down."</p>
+                </div>
+                <div class="mantra">"My breath steadies me. I am calming my system."</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-icon">💧</div>
+                <h3>Five Senses Check-In</h3>
+                <div class="step-content">
+                    <p>Apply your essential oil to your wrists. Bring them to your nose and breathe deeply.</p>
+                    <p>Drink your cold water—slowly, feeling it move down your throat into your belly.</p>
+                    <p>Now work through your senses deliberately:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem; line-height: 1.8;">
+                        <li><strong>Sight:</strong> What colors are in this room?</li>
+                        <li><strong>Sound:</strong> What's the quietest sound you can hear?</li>
+                        <li><strong>Touch:</strong> Feel your crystal. Is it smooth? Cool? Heavy?</li>
+                        <li><strong>Taste:</strong> Notice the water on your tongue.</li>
+                        <li><strong>Smell:</strong> Breathe the oil again.</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">You are bringing your awareness back to the present moment, where you are safe.</p>
+                </div>
+                <div class="mantra">"I am here in this moment. The storm is passing."</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-icon">🌿</div>
+                <h3>Name What's True</h3>
+                <div class="step-content">
+                    <p>Hold your calming crystal to your heart. Close your eyes if you can.</p>
+                    <p>Overwhelm makes everything feel catastrophic. Separate what's true from what fear is telling you.</p>
+                    <p>Ask yourself:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem; line-height: 1.8;">
+                        <li>Am I in physical danger right now? (Usually no.)</li>
+                        <li>What is the actual immediate problem?</li>
+                        <li>What can I do about it in the next hour?</li>
+                        <li>What needs to wait?</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">Write down one small, actionable thing if needed. Just one. The rest can wait.</p>
+                </div>
+                <div class="mantra">"I don't have to solve everything right now. One step is enough."</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-icon">🛌</div>
+                <h3>Rest or Move</h3>
+                <div class="step-content">
+                    <p>Your body will tell you what it needs. Listen.</p>
+                    <p><strong>If you need to rest:</strong> Lie down. If you have a heavy blanket, use it. Place your grounding crystal on your chest or hold it. Close your eyes. You don't have to sleep—just be still.</p>
+                    <p><strong>If you need to move:</strong> Walk slowly around your space. Stretch gently. Roll your shoulders. Move the stagnant energy without forcing anything.</p>
+                    <p>Either way, you're signaling to your body: "We've slowed down. We're safe now. We can rest."</p>
+                    <p>Set a timer for 10 minutes if you need permission to stop. When it goes off, reassess. You might need longer. That's okay.</p>
+                </div>
+                <div class="mantra">"I allow my body to regulate. I am coming back to balance."</div>
+            </div>
+        </div>
+        
+        <div class="reflection">
+            <h3>📖 After the Storm</h3>
+            <p style="color: var(--moonlight); margin-bottom: 1.5rem;">When you're calmer, these questions can help:</p>
+            <div class="reflection-prompts">
+                <div class="prompt">What triggered the overwhelm? (Not to blame—to understand.)</div>
+                <div class="prompt">What boundary was missing that allowed this much in?</div>
+                <div class="prompt">What do I need more of to prevent this? (Rest? Support? Space?)</div>
+                <div class="prompt">What helped me come back? (Remember for next time.)</div>
+            </div>
+        </div>
+        
+        <div class="closing">
+            <p class="closing-text">"As I intend, in light and love."</p>
+            <p class="closing-subtext">The Aether carries it so.</p>
+        </div>
+        
+        <div class="back-link">
+            <a href="rituals-library.html">← Back to Rituals</a>
+        </div>
+        
+        <footer>
+            <div style="margin-bottom: 2rem; padding: 1.5rem; background: rgba(212, 55, 55, 0.1); border: 1px solid rgba(212, 55, 55, 0.3); border-radius: 8px; text-align: center;">
+                <strong style="color: #d43737;">If you're in crisis:</strong><br>
+                <span style="font-size: 0.95rem;">
+                USA: 988 (call/text) • Text HELLO to 741741<br>
+                International: <a href="https://findahelpline.com" target="_blank" style="color: var(--gold-accent); text-decoration: underline;">findahelpline.com</a>
+                </span>
+            </div>
+            Regulation · Reflection · Ritual
+        </footer>
+    </div>
+</body>
+</html>

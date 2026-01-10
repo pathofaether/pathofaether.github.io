@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crystal Guide · Path of Aether</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@300;400&display=swap');
+        
+        :root {
+            --void: #0a0a12;
+            --deep-space: #1a1a2e;
+            --cosmic-purple: #4a3f6e;
+            --aether-glow: #9b8fc9;
+            --moonlight: #d9d3e8;
+            --starlight: #f0edf5;
+            --gold-accent: #d4af37;
+            --crystal-blue: #7ba3c4;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: var(--void);
+            color: var(--starlight);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            font-size: 18px;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(2px 2px at 20% 30%, white, transparent),
+                radial-gradient(2px 2px at 60% 70%, white, transparent),
+                radial-gradient(1px 1px at 50% 50%, white, transparent),
+                radial-gradient(1px 1px at 80% 10%, white, transparent),
+                radial-gradient(2px 2px at 90% 60%, white, transparent),
+                radial-gradient(1px 1px at 33% 80%, white, transparent);
+            background-size: 200% 200%;
+            background-position: 0 0, 40px 60px, 130px 270px, 70px 100px, 150px 200px, 90px 180px;
+            opacity: 0.3;
+            animation: twinkle 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.5; }
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeIn 1.2s ease-out;
+        }
+        
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.2rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--crystal-blue), var(--gold-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--aether-glow);
+            letter-spacing: 0.2em;
+            font-weight: 300;
+            font-style: italic;
+        }
+        
+        .intro {
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid var(--crystal-blue);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            line-height: 1.9;
+            backdrop-filter: blur(10px);
+            font-size: 1.2rem;
+            color: var(--moonlight);
+            text-align: center;
+        }
+        
+        .section {
+            margin: 4rem 0;
+        }
+        
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--gold-accent);
+            margin-bottom: 2rem;
+            text-align: center;
+            letter-spacing: 0.1em;
+        }
+        
+        .crystal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .crystal-card {
+            background: linear-gradient(135deg, var(--deep-space) 0%, var(--cosmic-purple) 100%);
+            border: 1px solid var(--aether-glow);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .crystal-card:hover {
+            border-color: var(--crystal-blue);
+            box-shadow: 0 8px 30px rgba(123, 163, 196, 0.3);
+            transform: translateY(-4px);
+        }
+        
+        .crystal-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: var(--gold-accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        .crystal-chakra {
+            color: var(--crystal-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        
+        .crystal-property {
+            color: var(--aether-glow);
+            font-size: 1.15rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .crystal-description {
+            color: var(--moonlight);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .crystal-use {
+            background: rgba(74, 63, 110, 0.3);
+            border-left: 3px solid var(--crystal-blue);
+            padding: 1rem;
+            border-radius: 4px;
+            color: var(--starlight);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .crystal-use strong {
+            color: var(--gold-accent);
+        }
+        
+        .element-section {
+            background: rgba(26, 26, 46, 0.5);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+        
+        .element-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--gold-accent);
+            margin-bottom: 1.5rem;
+        }
+        
+        .element-description {
+            color: var(--moonlight);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .back-link {
+            text-align: center;
+            margin: 3rem 0 2rem 0;
+        }
+        
+        .back-link a {
+            color: var(--gold-accent);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .back-link a:hover {
+            color: var(--moonlight);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding: 2rem;
+            color: var(--aether-glow);
+            font-size: 1.05rem;
+            letter-spacing: 0.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="icon">💎</div>
+            <h1>CRYSTAL GUIDE</h1>
+            <p class="subtitle">Sacred stones for grounding, healing, and intention</p>
+        </header>
+        
+        <div class="intro">
+            <p>Crystals are Earth's memory—formed over millennia, holding frequencies that can support your journey. Each stone carries specific properties that align with chakras, elements, and intentions.</p>
+            <p style="margin-top: 1rem;">Work with them intuitively. Hold them during ritual, place them on your altar, carry them in your pocket. Let the stones choose you.</p>
+        </div>
+        
+        <!-- GROUNDING & PROTECTION -->
+        <div class="section">
+            <h2 class="section-title">Grounding & Protection</h2>
+            <div class="crystal-grid">
+                <div class="crystal-card">
+                    <h3 class="crystal-name">Black Tourmaline</h3>
+                    <div class="crystal-chakra">Root Chakra • Earth Element</div>
+                    <div class="crystal-property">Protection · Grounding · Energetic Boundaries</div>
+                    <p class="crystal-description">Black Tourmaline is a powerful protector—it creates an energetic shield around your field, deflecting negativity and maintaining clear boundaries.</p>
+                    <div class="crystal-use"><strong>How to use:</strong> Hold when feeling scattered or overwhelmed. Place by your front door or at your workspace. Carry when you need to establish firm boundaries.</div>
+                </div>
+                
+                <div class="crystal-card">
+                    <h3 class="crystal-name">Hematite</h3>
+                    <div class="crystal-chakra">Root Chakra • Earth Element</div>
+                    <div class="crystal-property">Grounding · Strength · Stability</div>
+                    <p class="crystal-description">Hematite anchors you to the present moment. Its weight in your hand is a physical reminder: you are here, you are solid, you are safe.</p>
+                    <div class="crystal-use"><strong>How to use:</strong> Hold during meditation to ground. Place on your root chakra while lying down. Carry when you need to feel centered and stable.</div>
+                </div>
+                
+                <div class="crystal-card">
+                    <h3 class="crystal-name">Smoky Quartz</h3>
+                    <div class="crystal-chakra">Root Chakra • Earth Element</div>
+                    <div class="crystal-property">Transmutation · Grounding · Release</div>
+                    <p class="crystal-description">Smoky Quartz absorbs heavy energy and transmutes it into something lighter. It clears emotional debris while keeping you anchored.</p>
+                    <div class="crystal-use"><strong>How to use:</strong> Hold after difficult interactions. Place on your body during rest. Cleanse regularly under running water.</div>
+                </div>
+                
+                <div class="crystal-card">
+                    <h3 class="crystal-name">Red Jasper</h3>
+                    <div class="crystal-chakra">Root Chakra • Earth Element</div>
+                    <div class="crystal-property">Vitality · Stamina · Grounding</div>
+                    <p class="crystal-description">Red Jasper connects you to Earth's enduring energy. It stabilizes without stagnation, offering strength for the long journey.</p>
+                    <div class="crystal-use"><strong>How to use:</strong> Carry during times of physical or emotional exhaustion. Hold during morning centering to build steady energy for the day.</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- HEART HEALING -->
+        <div class="section">
+            <h2 class="section-title">Heart Healing & Love</h2>
+            <div class="crystal-grid">
+                <div class="crystal-card">
+                    <h3 class="crystal-name">Rose Quartz</h3>
+                    <div class="crystal-chakra">Heart Chakra • Water Element</div>
+                    <div class="crystal-property">Love · Healing · Compassion</div>
+                    <p class="crystal-description">Rose Quartz is the stone of unconditional love—for others, yes, but especially for yourself. It gently opens the heart that has learned to protect itself.</p>
+                    <div class="crystal-use"><strong>How to use:</strong> Hold during grief work. Place over your heart during rest. Carry when you need to be gentle with yourself.</div>
+                </div>
+                
+                <div class="crystal-card">
+                    <h3 class="crystal-name">Green Aventurine</h3>
+                    <div class="crystal-chakra">Heart Chakra • Earth Element</div>
+                    <div class="crystal-property">Growth · Opportunity · Emotional Healing</div>
+                    <p class="crystal-description">Green Aventurine supports growth—both inner and outer. It heals old heart wounds while opening you to new possibilities.</p>
+                    <div class="crystal-use"><strong>How to use:</strong> Carry when starting new projects or relationships. Meditate with it when processing heartbreak. Place on your workspace to invite opportunity.</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CLARITY & INTUITION -->
+        <div class="section">
+            <h2 class="section-title">Clarity & Intuition</h2>
+            <div class="crystal-grid">
+                <div class="crystal-card">
+                    <h3 class="crystal-name">Amethyst</h3>
+                    <div class="crystal-chakra">Third Eye & Crown Chakras • Air/Aether</div>
+                    <div class="crystal-property">Intuition · Spiritual Connection · Peace</div>
+                    <p class="crystal-description">Amethyst quiets the mental chatter and opens the channels of intuition. It connects you to wisdom beyond the rational mind.</p>
+                    <div class="crystal-use"><strong>How to use:</strong> Place under your pillow for dream work. Hold during meditation to deepen awareness. Carry when you need to trust your inner knowing.</div>
+                </div>
+                
+                <div class="crystal-card">
+                    <h3 class="crystal-name">Clear Quartz</h3>
+                    <div class="crystal-chakra">All Chakras • Aether Element</div>
+                    <div class="crystal-property">Amplification · Clarity · Intention</div>
+                    <p class="crystal-description">Clear Quartz is the master healer—it amplifies whatever intention you set. It clears mental fog and enhances the energy of other stones.</p>
+                    <div class="crystal-use"><strong>How to use:</strong> Program with your intention by holding and speaking your purpose. Combine with other crystals to amplify their properties. Meditate with it when seeking clarity.</div>
+                </div>
+                
+                <div class="crystal-card">
+                    <h3 class="crystal-name">Fluorite</h3>
+                    <div class="crystal-chakra">Third Eye Chakra • Air Element</div>
+                    <div class="crystal-property">Mental Clarity · Focus · Organization</div>
+                    <p class="crystal-description">Fluorite brings order to chaos—mental, emotional, or environmental. It supports focused thought and clear decision-making.</p>
+                    <div class="crystal-use"><strong>How to use:</strong> Keep at your desk during work. Hold when you need to concentrate or organize your thoughts. Meditate with it to clear mental clutter.</div>
+                </div>
+                
+                <div class="crystal-card">
+                    <h3 class="crystal-name">Labradorite</h3>
+                    <div class="crystal-chakra">Third Eye & Throat Chakras • Aether</div>
+                    <div class="crystal-property">Transformation · Magic · Protection</div>
+                    <p class="crystal-description">Labradorite is the stone of transformation and magic. It protects your energy field while enhancing intuition and synchronicity.</p>
+                    <div class="crystal-use"><strong>How to use:</strong> Carry during periods of change. Hold during ritual work. Place on your third eye during meditation to access deeper wisdom.</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- PEACE & CALM -->
+        <div class="section">
+            <h2 class="section-title">Peace & Emotional Balance</h2>
+            <div class="crystal-grid">
+                <div class="crystal-card">
+                    <h3 class="crystal-name">Blue Lace Agate</h3>
+                    <div class="crystal-chakra">Throat Chakra • Air/Water</div>
+                    <div class="crystal-property">Peace · Communication · Calm</div>
+                    <p class="crystal-description">Blue Lace Agate soothes anxiety and supports gentle, honest communication. It helps you speak your truth without harshness.</p>
+                    <div class="crystal-use"><strong>How to use:</strong> Hold before difficult conversations. Place on your throat during meditation. Carry when you need to stay calm while expressing yourself.</div>
+                </div>
+                
+                <div class="crystal-card">
+                    <h3 class="crystal-name">Lepidolite</h3>
+                    <div class="crystal-chakra">Heart & Third Eye Chakras • Water</div>
+                    <div class="crystal-property">Emotional Balance · Peace · Transition</div>
+                    <p class="crystal-description">Lepidolite contains natural lithium, making it deeply calming. It supports emotional regulation during times of change or grief.</p>
+                    <div class="crystal-use"><strong>How to use:</strong> Hold during anxiety or overwhelm. Place under pillow for peaceful sleep. Carry during transitions or grief work.</div>
+                </div>
+                
+                <div class="crystal-card">
+                    <h3 class="crystal-name">Howlite</h3>
+                    <div class="crystal-chakra">Crown Chakra • Air Element</div>
+                    <div class="crystal-property">Calm · Patience · Stillness</div>
+                    <p class="crystal-description">Howlite quiets an overactive mind and helps you access patience when everything feels urgent. It invites stillness.</p>
+                    <div class="crystal-use"><strong>How to use:</strong> Place under pillow to combat insomnia. Hold during meditation to quiet mental chatter. Carry when you need patience.</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SACRED STONES -->
+        <div class="section">
+            <h2 class="section-title">Sacred & Special Stones</h2>
+            <div class="crystal-grid">
+                <div class="crystal-card">
+                    <h3 class="crystal-name">Moonstone</h3>
+                    <div class="crystal-chakra">Sacral & Third Eye Chakras • Water</div>
+                    <div class="crystal-property">Intuition · Cycles · Divine Feminine</div>
+                    <p class="crystal-description">Moonstone connects you to lunar cycles and the wisdom of the divine feminine. It enhances intuition and supports emotional flow.</p>
+                    <div class="crystal-use"><strong>How to use:</strong> Work with during moon rituals. Hold during menstruation or hormonal shifts. Place under moonlight to charge.</div>
+                </div>
+                
+                <div class="crystal-card">
+                    <h3 class="crystal-name">Selenite</h3>
+                    <div class="crystal-chakra">Crown Chakra • Aether Element</div>
+                    <div class="crystal-property">Cleansing · High Vibration · Clarity</div>
+                    <p class="crystal-description">Selenite is self-cleansing and can cleanse other stones. It holds exceptionally high vibration and connects you to higher consciousness.</p>
+                    <div class="crystal-use"><strong>How to use:</strong> Place other crystals on selenite to cleanse them. Use as a wand to clear your aura. Keep in sacred space for high vibrational energy.</div>
+                </div>
+                
+                <div class="crystal-card">
+                    <h3 class="crystal-name">Celestite</h3>
+                    <div class="crystal-chakra">Throat & Crown Chakras • Air/Aether</div>
+                    <div class="crystal-property">Angelic Connection · Peace · Grief Support</div>
+                    <p class="crystal-description">Celestite connects you to angelic realms and provides gentle support during grief. It brings divine peace and comfort.</p>
+                    <div class="crystal-use"><strong>How to use:</strong> Place by your bed for peaceful sleep and dreams. Hold during grief work or when you need to feel held by something beyond yourself. Meditate with it for spiritual connection.</div>
+                </div>
+                
+                <div class="crystal-card">
+                    <h3 class="crystal-name">Apache Tear</h3>
+                    <div class="crystal-chakra">Root Chakra • Earth Element</div>
+                    <div class="crystal-property">Grief · Comfort · Emotional Healing</div>
+                    <p class="crystal-description">Apache Tear (a form of obsidian) is specifically for grief work. Legend says it absorbs tears of sorrow.</p>
+                    <div class="crystal-use"><strong>How to use:</strong> Hold during active grief. Carry after loss. Let it absorb your pain—it's strong enough to hold it.</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- POWER & MANIFESTATION -->
+        <div class="section">
+            <h2 class="section-title">Power & Manifestation</h2>
+            <div class="crystal-grid">
+                <div class="crystal-card">
+                    <h3 class="crystal-name">Citrine</h3>
+                    <div class="crystal-chakra">Solar Plexus Chakra • Fire Element</div>
+                    <div class="crystal-property">Abundance · Joy · Confidence</div>
+                    <p class="crystal-description">Citrine radiates solar energy—warmth, abundance, and personal power. It opens you to prosperity and joy.</p>
+                    <div class="crystal-use"><strong>How to use:</strong> Place in your workspace or cash register. Carry when you need confidence. Meditate with it to call in abundance.</div>
+                </div>
+                
+                <div class="crystal-card">
+                    <h3 class="crystal-name">Carnelian</h3>
+                    <div class="crystal-chakra">Sacral Chakra • Fire Element</div>
+                    <div class="crystal-property">Courage · Creativity · Vitality</div>
+                    <p class="crystal-description">Carnelian ignites creative fire and warrior courage. It supports bold action and passionate living.</p>
+                    <div class="crystal-use"><strong>How to use:</strong> Hold before important presentations or decisions. Carry when you need courage. Place on your sacral chakra to unblock creative energy.</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- WORKING WITH CRYSTALS -->
+        <div class="element-section">
+            <h3 class="element-title">Working with Crystals</h3>
+            <p class="element-description"><strong>Cleansing:</strong> Cleanse new crystals and after heavy use. Methods include: running water (not for soft stones), smoke (sage/palo santo), moonlight, sound (singing bowl), or placing on selenite.</p>
+            <p class="element-description"><strong>Charging:</strong> Leave crystals in moonlight (especially full moon) or sunlight (some fade in sun—check your stone). Set intention while charging.</p>
+            <p class="element-description"><strong>Programming:</strong> Hold crystal, close eyes, and speak your intention clearly. The stone will hold this frequency.</p>
+            <p class="element-description"><strong>Combining:</strong> Stones work well together. Trust your intuition about which to pair. Clear quartz amplifies other stones.</p>
+            <p class="element-description"><strong>Storage:</strong> Keep crystals where you can see them or in a dedicated space. Some prefer to keep them separate; others create crystal grids. Listen to what feels right.</p>
+        </div>
+        
+        <div class="back-link">
+            <a href="index.html">← Back to Home</a>
+        </div>
+        
+        <footer>
+            <div style="margin-bottom: 2rem; padding: 1.5rem; background: rgba(212, 55, 55, 0.1); border: 1px solid rgba(212, 55, 55, 0.3); border-radius: 8px; text-align: center;">
+                <strong style="color: #d43737;">If you're in crisis:</strong><br>
+                <span style="font-size: 0.95rem;">
+                USA: 988 (call/text) • Text HELLO to 741741<br>
+                International: <a href="https://findahelpline.com" target="_blank" style="color: var(--gold-accent); text-decoration: underline;">findahelpline.com</a>
+                </span>
+            </div>
+            Regulation · Reflection · Ritual
+        </footer>
+    </div>
+</body>
+</html>

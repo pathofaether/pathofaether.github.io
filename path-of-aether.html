@@ -1157,9 +1157,40 @@
             interpretationArea.classList.remove('hidden');
             interpretationArea.innerHTML = '<div class="loading">Weaving the threads of meaning...</div>';
             
-            // Get moon phase and crystal
-            const moonPhase = getMoonPhase();
-            const crystal = getCrystalRecommendation();
+            function getMoonPhase() {
+    const today = new Date();
+    let year = today.getFullYear();
+    let month = today.getMonth() + 1;
+    const day = today.getDate();
+
+    if (month < 3) {
+        year--;
+        month += 12;
+    }
+
+    month++;
+    const c = 365.25 * year;
+    const e = 30.6 * month;
+    let jd = c + e + day - 694039.09;
+    jd /= 29.5305882;
+    let b = parseInt(jd);
+    jd -= b;
+    b = Math.round(jd * 8);
+    if (b >= 8) b = 0;
+
+    const phases = [
+        { name: "New Moon", description: "New beginnings, setting intentions, planting seeds. The dark moon invites introspection.", emoji: "🌑" },
+        { name: "Waxing Crescent", description: "Growth, momentum building, taking action. Your intentions begin to take form.", emoji: "🌒" },
+        { name: "First Quarter", description: "Challenges arise, decisions needed. Push through resistance.", emoji: "🌓" },
+        { name: "Waxing Gibbous", description: "Refinement, adjustment, preparation. Nearly there—stay focused.", emoji: "🌔" },
+        { name: "Full Moon", description: "Culmination, celebration, illumination. Everything revealed in moonlight.", emoji: "🌕" },
+        { name: "Waning Gibbous", description: "Gratitude, sharing wisdom, giving back. Harvest what you've grown.", emoji: "🌖" },
+        { name: "Last Quarter", description: "Release, forgiveness, letting go. Release what no longer serves.", emoji: "🌗" },
+        { name: "Waning Crescent", description: "Rest, reflection, surrender. Prepare for renewal.", emoji: "🌘" }
+    ];
+
+    return phases[b];
+}
             
             // Build interpretation from traditional meanings
             let interpretationHTML = '<div class="interpretation">';

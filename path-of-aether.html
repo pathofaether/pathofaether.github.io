@@ -32,7 +32,6 @@
             position: relative;
         }
         
-        /* Cosmic background effect */
         body::before {
             content: '';
             position: fixed;
@@ -84,7 +83,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 30px rgba(139, 127, 184, 0.3);
         }
         
         .subtitle {
@@ -191,14 +189,12 @@
             overflow: hidden;
         }
         
-        /* Special styling for single card */
         .card-area:has(.tarot-card:only-child) .tarot-card {
             width: 220px;
             height: 360px;
             padding: 2rem;
         }
         
-        /* Tighter spacing for 5-card spreads */
         .card-area:has(.tarot-card:nth-child(5)) {
             gap: 1rem;
         }
@@ -318,6 +314,7 @@
         button:disabled {
             opacity: 0.5;
             cursor: not-allowed;
+            transform: none;
         }
         
         .button-group {
@@ -347,7 +344,6 @@
             display: none;
         }
         
-        /* Empowerment Area Styles */
         .empowerment-container {
             max-width: 600px;
             margin: 0 auto;
@@ -410,43 +406,16 @@
             box-shadow: 0 0 10px var(--gold-accent);
         }
         
-        .energy-particle:nth-child(1) {
-            animation-delay: 0s;
-            left: 20%;
-        }
-        
-        .energy-particle:nth-child(2) {
-            animation-delay: 0.6s;
-            left: 35%;
-        }
-        
-        .energy-particle:nth-child(3) {
-            animation-delay: 1.2s;
-            left: 50%;
-        }
-        
-        .energy-particle:nth-child(4) {
-            animation-delay: 1.8s;
-            left: 65%;
-        }
-        
-        .energy-particle:nth-child(5) {
-            animation-delay: 2.4s;
-            left: 80%;
-        }
+        .energy-particle:nth-child(1) { animation-delay: 0s; left: 20%; }
+        .energy-particle:nth-child(2) { animation-delay: 0.6s; left: 35%; }
+        .energy-particle:nth-child(3) { animation-delay: 1.2s; left: 50%; }
+        .energy-particle:nth-child(4) { animation-delay: 1.8s; left: 65%; }
+        .energy-particle:nth-child(5) { animation-delay: 2.4s; left: 80%; }
         
         @keyframes energyFloat {
-            0% {
-                transform: translateY(100px);
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px);
-                opacity: 0;
-            }
+            0% { transform: translateY(100px); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
         }
         
         .shuffle-section {
@@ -491,6 +460,14 @@
             font-size: 0.9rem;
             letter-spacing: 0.1em;
         }
+
+        .section-label {
+            font-family: 'Cinzel', serif;
+            color: var(--aether-glow);
+            font-size: 1.1rem;
+            margin: 2rem 0 1rem 0;
+            letter-spacing: 0.1em;
+        }
     </style>
 </head>
 <body>
@@ -503,7 +480,7 @@
         <div id="spreadSelection" class="phase">
             <h2 class="phase-title">Choose Your Path</h2>
             
-            <h3 style="font-family: 'Cinzel', serif; color: var(--aether-glow); font-size: 1.1rem; margin: 2rem 0 1rem 0; letter-spacing: 0.1em;">QUICK GUIDANCE</h3>
+            <h3 class="section-label">QUICK GUIDANCE</h3>
             <div class="spread-grid">
                 <div class="spread-card" onclick="selectSpread('daily')">
                     <h3>Daily Guidance</h3>
@@ -515,7 +492,7 @@
                 </div>
             </div>
             
-            <h3 style="font-family: 'Cinzel', serif; color: var(--aether-glow); font-size: 1.1rem; margin: 2rem 0 1rem 0; letter-spacing: 0.1em;">EMOTIONAL HEALING</h3>
+            <h3 class="section-label">EMOTIONAL HEALING</h3>
             <div class="spread-grid">
                 <div class="spread-card" onclick="selectSpread('regulation')">
                     <h3>Regulation Check-In</h3>
@@ -531,7 +508,7 @@
                 </div>
             </div>
             
-            <h3 style="font-family: 'Cinzel', serif; color: var(--aether-glow); font-size: 1.1rem; margin: 2rem 0 1rem 0; letter-spacing: 0.1em;">CAREER & WORK</h3>
+            <h3 class="section-label">CAREER &amp; WORK</h3>
             <div class="spread-grid">
                 <div class="spread-card" onclick="selectSpread('career')">
                     <h3>Career Clarity</h3>
@@ -547,14 +524,14 @@
                 </div>
             </div>
             
-            <h3 style="font-family: 'Cinzel', serif; color: var(--aether-glow); font-size: 1.1rem; margin: 2rem 0 1rem 0; letter-spacing: 0.1em;">ABUNDANCE & PROSPERITY</h3>
+            <h3 class="section-label">ABUNDANCE &amp; PROSPERITY</h3>
             <div class="spread-grid">
                 <div class="spread-card" onclick="selectSpread('prosperity')">
                     <h3>Prosperity Path</h3>
                     <p>Five-card deep dive into financial energy and abundance blocks.</p>
                 </div>
                 <div class="spread-card" onclick="selectSpread('fortune')">
-                    <h3>Fortune & Opportunity</h3>
+                    <h3>Fortune &amp; Opportunity</h3>
                     <p>Hidden opportunities, luck factors, where to invest energy.</p>
                 </div>
                 <div class="spread-card" onclick="selectSpread('money')">
@@ -563,7 +540,7 @@
                 </div>
             </div>
             
-            <h3 style="font-family: 'Cinzel', serif; color: var(--aether-glow); font-size: 1.1rem; margin: 2rem 0 1rem 0; letter-spacing: 0.1em;">DECISION MAKING</h3>
+            <h3 class="section-label">DECISION MAKING</h3>
             <div class="spread-grid">
                 <div class="spread-card" onclick="selectSpread('decision')">
                     <h3>Decision Guidance</h3>
@@ -627,8 +604,7 @@
     
     <script>
         const TAROT_DECK = [
-            // Major Arcana
-            { name: "The Fool", suit: "major", 
+            { name: "The Fool", suit: "major",
               upright: "New beginnings, innocence, spontaneity, free spirit. A leap of faith into the unknown. Trust in the journey ahead.",
               reversed: "Recklessness, taking unnecessary risks, naivety. A need to look before you leap.",
               themes: "Beginnings, Faith, Adventure" },
@@ -716,8 +692,6 @@
               upright: "Completion, accomplishment, travel, fulfillment. The cycle completes. Celebrate what you've built.",
               reversed: "Lack of closure, unfinished business. What needs completion?",
               themes: "Completion, Achievement, Integration" },
-            
-            // Cups (Emotional/Creative)
             { name: "Ace of Cups", suit: "cups",
               upright: "New love, new relationships, compassion, creativity. An overflowing heart. Emotional new beginning.",
               reversed: "Emotional loss, blocked creativity, repressed emotions. Clear the channels.",
@@ -758,8 +732,6 @@
               upright: "Divine love, blissful relationships, harmony, alignment. Rainbow blessing. Heaven on earth.",
               reversed: "Broken family, disconnection, misalignment. Heal the foundation.",
               themes: "Harmony, Family, Bliss" },
-            
-            // Pentacles (Material/Physical)
             { name: "Ace of Pentacles", suit: "pentacles",
               upright: "Opportunity, prosperity, new venture. Material new beginning. Plant the seed.",
               reversed: "Lost opportunity, missed chance, poor planning. Reassess foundations.",
@@ -800,8 +772,6 @@
               upright: "Wealth, financial security, family, long-term success, contribution. Generational blessing. Legacy building.",
               reversed: "Financial failure, family discord, instability. Rebuild the foundation.",
               themes: "Legacy, Wealth, Family" },
-            
-            // Swords (Mental/Intellectual)
             { name: "Ace of Swords", suit: "swords",
               upright: "Breakthrough, clarity, sharp mind. Mental new beginning. Truth cuts through.",
               reversed: "Confusion, miscommunication, chaos. Clear the mental fog.",
@@ -842,8 +812,6 @@
               upright: "Painful endings, deep wounds, betrayal, loss, crisis. Rock bottom. But the sun rises.",
               reversed: "Recovery, regeneration, resistance to ending. The worst is over.",
               themes: "Endings, Betrayal, Rock Bottom" },
-            
-            // Wands (Action/Passion)
             { name: "Ace of Wands", suit: "wands",
               upright: "Inspiration, new opportunities, growth, potential. Creative spark. The fire ignites.",
               reversed: "Lack of direction, delays, creative blocks. Rekindle the flame.",
@@ -1010,14 +978,12 @@
             shuffleCount = 0;
             drawnCards = [];
             
-            // Show empowerment area
             document.getElementById('spreadSelection').classList.add('hidden');
             document.getElementById('empowermentArea').classList.remove('hidden');
             document.getElementById('empowermentTitle').textContent = currentSpread.title;
             document.getElementById('readingArea').classList.add('hidden');
             document.getElementById('interpretationArea').classList.add('hidden');
             
-            // Reset empowerment area
             document.getElementById('intentionInput').value = '';
             document.getElementById('shuffleCount').textContent = '';
             document.getElementById('drawButton').disabled = true;
@@ -1029,11 +995,9 @@
             const shuffleCountEl = document.getElementById('shuffleCount');
             const drawBtn = document.getElementById('drawButton');
             
-            // Visual feedback
             shuffleBtn.classList.add('shuffling');
             setTimeout(() => shuffleBtn.classList.remove('shuffling'), 500);
             
-            // Update count
             if (shuffleCount < 3) {
                 shuffleCountEl.textContent = `Shuffled ${shuffleCount} time${shuffleCount > 1 ? 's' : ''}. Shuffle at least 3 times to charge the deck.`;
                 shuffleCountEl.style.color = 'var(--aether-glow)';
@@ -1045,24 +1009,20 @@
         }
         
         function drawCards() {
-            // Capture intention
             userIntention = document.getElementById('intentionInput').value.trim();
             
-            // Draw cards based on spread count
             const cardCount = currentSpread.count;
             const shuffled = [...TAROT_DECK].sort(() => Math.random() - 0.5);
             drawnCards = shuffled.slice(0, cardCount).map(card => ({
                 ...card,
-                isReversed: Math.random() < 0.4 // 40% chance of reversed
+                isReversed: Math.random() < 0.4
             }));
             
-            // Update UI
             document.getElementById('empowermentArea').classList.add('hidden');
             document.getElementById('readingArea').classList.remove('hidden');
             document.getElementById('spreadTitle').textContent = currentSpread.title;
             document.getElementById('interpretationArea').classList.add('hidden');
             
-            // Display cards
             const cardArea = document.getElementById('cardArea');
             cardArea.innerHTML = '';
             
@@ -1079,7 +1039,6 @@
         }
         
         function getCrystalRecommendation() {
-            // Analyze the reading for crystal recommendation
             const suits = drawnCards.map(c => c.suit);
             const hasReversed = drawnCards.some(c => c.isReversed);
             const hasMajor = suits.includes('major');
@@ -1088,127 +1047,81 @@
             const hasPentacles = suits.includes('pentacles');
             const hasWands = suits.includes('wands');
             
-            // Determine dominant energy
-            let crystalCategory = 'grounding'; // default
+            let crystalCategory = 'grounding';
             
             if (hasSwords && hasReversed) {
-                crystalCategory = 'clarity'; // Mental challenges need clarity
+                crystalCategory = 'clarity';
             } else if (hasCups) {
-                crystalCategory = 'emotional'; // Cups are emotional
+                crystalCategory = 'emotional';
             } else if (hasPentacles) {
-                crystalCategory = 'abundance'; // Pentacles are material
+                crystalCategory = 'abundance';
             } else if (hasWands) {
-                crystalCategory = 'courage'; // Wands are action
+                crystalCategory = 'courage';
             } else if (hasMajor) {
-                crystalCategory = 'transformation'; // Major arcana = big changes
+                crystalCategory = 'transformation';
             }
             
-            // Pick a random crystal from the category
             const crystals = CRYSTALS[crystalCategory];
             const crystal = crystals[Math.floor(Math.random() * crystals.length)];
-            
             return { ...crystal, category: crystalCategory };
         }
         
         function getMoonPhase() {
             const today = new Date();
-            const year = today.getFullYear();
-            const month = today.getMonth() + 1;
+            let year = today.getFullYear();
+            let month = today.getMonth() + 1;
             const day = today.getDate();
-            
-            // Simplified moon phase calculation
-            let c = 0;
-            let e = 0;
-            let jd = 0;
-            let b = 0;
-            
+
             if (month < 3) {
                 year--;
                 month += 12;
             }
-            
-            ++month;
-            c = 365.25 * year;
-            e = 30.6 * month;
-            jd = c + e + day - 694039.09;
+
+            month++;
+            const c = 365.25 * year;
+            const e = 30.6 * month;
+            let jd = c + e + day - 694039.09;
             jd /= 29.5305882;
-            b = parseInt(jd);
+            let b = parseInt(jd);
             jd -= b;
             b = Math.round(jd * 8);
-            
             if (b >= 8) b = 0;
-            
+
             const phases = [
                 { name: "New Moon", description: "New beginnings, setting intentions, planting seeds. The dark moon invites introspection.", emoji: "🌑" },
                 { name: "Waxing Crescent", description: "Growth, momentum building, taking action. Your intentions begin to take form.", emoji: "🌒" },
                 { name: "First Quarter", description: "Challenges arise, decisions needed. Push through resistance.", emoji: "🌓" },
-                { name: "Waxing Gibbous", description: "Refinement, adjustment, preparation. Nearly there—stay focused.", emoji: "🌔" },
+                { name: "Waxing Gibbous", description: "Refinement, adjustment, preparation. Nearly there, stay focused.", emoji: "🌔" },
                 { name: "Full Moon", description: "Culmination, celebration, illumination. Everything revealed in moonlight.", emoji: "🌕" },
                 { name: "Waning Gibbous", description: "Gratitude, sharing wisdom, giving back. Harvest what you've grown.", emoji: "🌖" },
                 { name: "Last Quarter", description: "Release, forgiveness, letting go. Release what no longer serves.", emoji: "🌗" },
                 { name: "Waning Crescent", description: "Rest, reflection, surrender. Prepare for renewal.", emoji: "🌘" }
             ];
-            
+
             return phases[b];
         }
         
-        async function getInterpretation() {
+        function getInterpretation() {
             const interpretationArea = document.getElementById('interpretationArea');
             interpretationArea.classList.remove('hidden');
             interpretationArea.innerHTML = '<div class="loading">Weaving the threads of meaning...</div>';
             
-            function getMoonPhase() {
-    const today = new Date();
-    let year = today.getFullYear();
-    let month = today.getMonth() + 1;
-    const day = today.getDate();
-
-    if (month < 3) {
-        year--;
-        month += 12;
-    }
-
-    month++;
-    const c = 365.25 * year;
-    const e = 30.6 * month;
-    let jd = c + e + day - 694039.09;
-    jd /= 29.5305882;
-    let b = parseInt(jd);
-    jd -= b;
-    b = Math.round(jd * 8);
-    if (b >= 8) b = 0;
-
-    const phases = [
-        { name: "New Moon", description: "New beginnings, setting intentions, planting seeds. The dark moon invites introspection.", emoji: "🌑" },
-        { name: "Waxing Crescent", description: "Growth, momentum building, taking action. Your intentions begin to take form.", emoji: "🌒" },
-        { name: "First Quarter", description: "Challenges arise, decisions needed. Push through resistance.", emoji: "🌓" },
-        { name: "Waxing Gibbous", description: "Refinement, adjustment, preparation. Nearly there—stay focused.", emoji: "🌔" },
-        { name: "Full Moon", description: "Culmination, celebration, illumination. Everything revealed in moonlight.", emoji: "🌕" },
-        { name: "Waning Gibbous", description: "Gratitude, sharing wisdom, giving back. Harvest what you've grown.", emoji: "🌖" },
-        { name: "Last Quarter", description: "Release, forgiveness, letting go. Release what no longer serves.", emoji: "🌗" },
-        { name: "Waning Crescent", description: "Rest, reflection, surrender. Prepare for renewal.", emoji: "🌘" }
-    ];
-
-    return phases[b];
-}
+            const moonPhase = getMoonPhase();
+            const crystal = getCrystalRecommendation();
             
-            // Build interpretation from traditional meanings
             let interpretationHTML = '<div class="interpretation">';
             interpretationHTML += '<h3>Guidance from the Aether</h3>';
             
-            // Show moon phase
             interpretationHTML += `<div style="text-align: center; margin: 2rem 0; padding: 1.5rem; background: rgba(74, 63, 110, 0.3); border-radius: 8px;">`;
             interpretationHTML += `<div style="font-size: 2rem; margin-bottom: 0.5rem;">${moonPhase.emoji}</div>`;
             interpretationHTML += `<div style="font-family: 'Cinzel', serif; color: var(--gold-accent); font-size: 1.2rem; margin-bottom: 0.5rem;">${moonPhase.name}</div>`;
             interpretationHTML += `<div style="color: var(--moonlight); font-style: italic;">${moonPhase.description}</div>`;
             interpretationHTML += `</div>`;
             
-            // User's intention if provided
             if (userIntention) {
                 interpretationHTML += `<p style="font-style: italic; color: var(--aether-glow); border-left: 3px solid var(--gold-accent); padding-left: 1rem; margin: 1.5rem 0;">Your Intention: ${userIntention}</p>`;
             }
             
-            // Card by card interpretation
             drawnCards.forEach((card, index) => {
                 const meaning = card.isReversed ? card.reversed : card.upright;
                 interpretationHTML += `<div style="margin: 2rem 0; padding: 1.5rem; background: rgba(26, 26, 46, 0.5); border-radius: 8px; border-left: 3px solid var(--gold-accent);">`;
@@ -1218,31 +1131,28 @@
                 interpretationHTML += `</div>`;
             });
             
-            // Weaving section - Path of Aether lens
             interpretationHTML += `<div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--aether-glow);">`;
             interpretationHTML += `<h4 style="font-family: 'Cinzel', serif; color: var(--gold-accent); margin-bottom: 1rem;">Weaving the Threads</h4>`;
             interpretationHTML += `<p>These cards speak to where you are in this moment. Each offers insight into the question you brought to the reading. The meanings are traditional; your interpretation makes them personal.</p>`;
             interpretationHTML += `<p>Consider how these themes interact with each other. What patterns emerge? What calls for your attention? What wants to transform?</p>`;
             interpretationHTML += `</div>`;
             
-            // Crystal recommendation
             interpretationHTML += `<div style="margin-top: 2.5rem; padding: 2rem; background: rgba(74, 63, 110, 0.3); border-radius: 8px; border: 1px solid var(--gold-accent);">`;
             interpretationHTML += `<h4 style="font-family: 'Cinzel', serif; color: var(--gold-accent); margin-bottom: 1rem;">💎 Crystal Support</h4>`;
             interpretationHTML += `<div style="font-size: 1.3rem; color: var(--moonlight); margin-bottom: 0.5rem;">${crystal.name}</div>`;
             interpretationHTML += `<p style="color: var(--starlight); line-height: 1.8;">${crystal.properties}</p>`;
-            interpretationHTML += `<p style="margin-top: 1rem; font-style: italic; color: var(--aether-glow); font-size: 0.95rem;">This reading carries ${crystal.category} energy. Carry this stone, hold it during meditation, or place it on your desk as you integrate this guidance.</p>`;
+            interpretationHTML += `<p style="margin-top: 1rem; font-style: italic; color: var(--aether-glow); font-size: 0.95rem;">This reading carries ${crystal.category} energy. Carry this stone, hold it during meditation, or place it on your altar as you integrate this guidance.</p>`;
             interpretationHTML += `</div>`;
             
-            // Ritual suggestion
             interpretationHTML += `<div style="margin-top: 2rem;">`;
             interpretationHTML += `<p style="font-style: italic; color: var(--aether-glow);">Ritual suggestion: Journal on what each card stirs in you. Let the cards be mirrors, not prescriptions. The wisdom you seek is already within you.</p>`;
             interpretationHTML += `</div>`;
             
             interpretationHTML += '</div>';
             
-            // Slight delay for effect
             setTimeout(() => {
                 interpretationArea.innerHTML = interpretationHTML;
+                interpretationArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 800);
         }
         
@@ -1255,6 +1165,7 @@
             drawnCards = [];
             shuffleCount = 0;
             userIntention = '';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
